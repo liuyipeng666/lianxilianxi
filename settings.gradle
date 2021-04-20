@@ -1,3 +1,6 @@
+
 include ':Log'
+
+include ':imagerloader'
 include ':app'
 rootProject.name = "dadadada"
