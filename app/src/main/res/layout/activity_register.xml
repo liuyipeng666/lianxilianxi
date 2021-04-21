@@ -7,18 +7,18 @@
     android:orientation="vertical"
     tools:context=".register.view.RegisterActivity">
     <EditText
-        android:id="@+id/login_name"
+        android:id="@+id/register_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />
     <EditText
-        android:id="@+id/login_pwd"
+        android:id="@+id/register_pwd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />
     <Button
-        android:id="@+id/login"
-        android:text="登录"
+        android:id="@+id/register"
+        android:text="注册"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />

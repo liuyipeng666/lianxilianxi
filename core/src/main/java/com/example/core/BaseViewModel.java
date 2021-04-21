@@ -2,14 +2,15 @@ package com.example.core;
 
 import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleObserver;
+import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.OnLifecycleEvent;
 import androidx.lifecycle.ViewModel;
 
 public abstract class BaseViewModel<Repo extends BaseRepository> extends ViewModel implements LifecycleObserver {
     protected Repo mRepository;
-    protected LifecycleObserver mOwner;
+    protected LifecycleOwner mOwner;
 
-    public BaseViewModel(LifecycleObserver _owner){
+    public BaseViewModel(LifecycleOwner _owner){
         mRepository = createRepository();
         mOwner = _owner;
     }

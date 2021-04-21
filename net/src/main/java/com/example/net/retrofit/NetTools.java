@@ -1,18 +1,10 @@
 package com.example.net.retrofit;
 
-import android.text.TextUtils;
-
-
-
-import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
-import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -44,7 +36,7 @@ public class NetTools {
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addCallAdapterFactory(LiveDataCallAdapterFactory.create())
-                .baseUrl("http://39.98.153.96:8080/Help")
+                .baseUrl("http://39.98.153.96:8080/")
                 .build();
     }
 
@@ -54,13 +46,13 @@ public class NetTools {
                 .connectTimeout(10, TimeUnit.SECONDS)
                 .readTimeout(10, TimeUnit.SECONDS)
                 .writeTimeout(10, TimeUnit.SECONDS)
-//                .addNetworkInterceptor(createNetworkInterceptor())
-//                .addInterceptor(createTokenInterceptor())
+              .addNetworkInterceptor(createNetworkInterceptor())
+           //.addInterceptor(createTokenInterceptor())
                 .build();
     }
 
     // 创建处理Token的自定义拦截器
-
+//
 //    private Interceptor createTokenInterceptor() {
 //        Interceptor interceptor = new Interceptor() {
 //            @Override
@@ -83,29 +75,29 @@ public class NetTools {
 //        };
 //        return interceptor;
 //    }
-    //判断 Code 是否为401
-
-    private boolean checkHttpCode401(Response response) {
-        if (null == response) {
-            return false;
-        }
-        if (response.code() == 401) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    /**
-     * 获取Token的同步网络请求
-     *
-     * @return
-     */
+//    //判断 Code 是否为401
+//
+//    private boolean checkHttpCode401(Response response) {
+//        if (null == response) {
+//            return false;
+//        }
+//        if (response.code() == 401) {
+//            return true;
+//        } else {
+//            return false;
+//        }
+//    }
+//
+//    /**
+//     * 获取Token的同步网络请求
+//     *
+//     * @return
+//     */
 //    private String requestToken() {
 //
 //
 //        TokenApi tokenApi = create(TokenApi.class);
-//        Call<TokenRespEntity> tokenService = tokenApi.getToken("password", ConstValue.AUTHCODE, "");
+//        Call<TokenRespEntity> tokenService = tokenApi.getToken("password", ConsValue.AUTHCODE, "");
 //        try {
 //            retrofit2.Response<TokenRespEntity> result = tokenService.execute();
 //            if (result != null && result.body() != null) {
@@ -125,6 +117,7 @@ public class NetTools {
     private Interceptor createNetworkInterceptor() {
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        //Log.i("www", "createNetworkInterceptor: +dadad");
         return interceptor;
     }
 
