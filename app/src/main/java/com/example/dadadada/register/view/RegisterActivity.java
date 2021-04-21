@@ -1,4 +1,4 @@
-package com.example.dadadada;
+package com.example.dadadada.register.view;
 
 import android.os.Bundle;
 import android.widget.Button;
@@ -6,7 +6,9 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class LoginActivity extends AppCompatActivity {
+import com.example.dadadada.R;
+
+public class RegisterActivity extends AppCompatActivity {
 
     private EditText loginName;
     private EditText loginPwd;
