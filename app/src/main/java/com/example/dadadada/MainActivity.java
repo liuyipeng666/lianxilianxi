@@ -1,30 +1,28 @@
 package com.example.dadadada;
 
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
-
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.widget.ListView;
 import android.widget.Toast;
 
-
-
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.amap.api.maps.AMap;
 import com.amap.api.maps.MapView;
 import com.example.net.ZLogManager;
 
-
-
-
-
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     MapView mMapView = null;
     //初始化地图控制器对象
     AMap aMap;
+    private ListView lv;
+    private List<Trace> traceList = new ArrayList<>(10);
+    private TraceListAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
         ZLogManager.getInstance().i("哒哒哒");
 
 
-
         mMapView = (MapView) findViewById(R.id.map);
         //在activity执行onCreate时执行mMapView.onCreate(savedInstanceState)，创建地图
 
@@ -42,6 +39,23 @@ public class MainActivity extends AppCompatActivity {
         if (aMap == null) {
             aMap = mMapView.getMap();
         }
+        initView();
+        initData();
+    }
+
+    private void initData() {
+        // 模拟一些假的数据
+        traceList.add(new Trace("2019/12/19 16:30:00", "活动A     已参加（5/10）人                              下午三点 西二旗餐厅聚会...       "));
+        traceList.add(new Trace("2019/12/19 19:30:00", "活动A     已参加（5/10）人                              下午三点 西二旗餐厅聚会...       "));
+        traceList.add(new Trace("2019/12/12 14:30:00", "活动A     已参加（5/10）人                              下午三点 西二旗餐厅聚会...       "));
+        traceList.add(new Trace("2019/12/12 14:30:00", "活动A     已参加（5/10）人                              下午三点 西二旗餐厅聚会...       "));
+        traceList.add(new Trace("2019/12/12 14:30:00", "活动A     已参加（5/10）人                              下午三点 西二旗餐厅聚会...       "));
+        traceList.add(new Trace("2019/12/12 14:30:00", "活动A     已参加（5/10）人                              下午三点 西二旗餐厅聚会...       "));
+        traceList.add(new Trace("2019/12/12 14:30:00", "活动A     已参加（5/10）人                              下午三点 西二旗餐厅聚会...       "));
+        traceList.add(new Trace("2019/12/12 14:30:00", "活动A     已参加（5/10）人                              下午三点 西二旗餐厅聚会...       "));
+        traceList.add(new Trace("2019/12/12 14:30:00", "活动A     已参加（5/10）人                              下午三点 西二旗餐厅聚会...       "));
+        adapter = new TraceListAdapter(this, traceList);
+        lv.setAdapter(adapter);
     }
 
     @Override
@@ -71,5 +85,9 @@ public class MainActivity extends AppCompatActivity {
         //在activity执行onSaveInstanceState时执行mMapView.onSaveInstanceState (outState)，保存地图当前的状态
         mMapView.onSaveInstanceState(outState);
 
+    }
+
+    private void initView() {
+        lv = (ListView) findViewById(R.id.lv);
     }
 }

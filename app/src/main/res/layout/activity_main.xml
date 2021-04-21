@@ -5,13 +5,33 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-    <com.amap.api.maps.MapView
 
-        android:id="@+id/map"
-
+    <FrameLayout
         android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        android:layout_height="match_parent"/>
+
+        <com.amap.api.maps.MapView
+            android:id="@+id/map"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="300dp"
+            android:background="#6E6D74"
+            android:orientation="vertical">
+
+            <ListView
+                android:id="@+id/lv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:divider="@null"
+                android:dividerHeight="0dp" />
+        </LinearLayout>
+    </FrameLayout>
 
 
 </LinearLayout>
