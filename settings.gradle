@@ -1,8 +1,12 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 include ':net'
 =======
 include ':Resource'
 include ':Common'
+=======
+include ':core'
+>>>>>>> 2725c5970c45befd94f95309d301584fed53ba4e
 include ':Log'
 
 >>>>>>> 2005a156a261b31340eb7a3829593befb3fec0f9
