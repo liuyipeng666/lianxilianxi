@@ -16,6 +16,7 @@
             <option value="$PROJECT_DIR$/Resource" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/imagerloader" />
+            <option value="$PROJECT_DIR$/net" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
