@@ -1,7 +1,15 @@
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> aaa
 include ':net'
 include ':Resource'
 include ':Common'
+=======
+include ':core'
+>>>>>>> 2725c5970c45befd94f95309d301584fed53ba4e
 include ':Log'
 include ':imagerloader'
 include ':app'
