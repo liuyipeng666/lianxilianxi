@@ -1,2 +1,20 @@
 R_DEF: Internal format may change without notice
 local
+color black
+color purple_200
+color purple_500
+color purple_700
+color teal_200
+color teal_700
+color white
+drawable head_shape
+drawable ic_camera
+drawable ic_circulation
+drawable ic_delete
+drawable ic_image
+drawable ic_location
+drawable ic_pen
+drawable ic_remind
+drawable ic_setting
+drawable ic_share_variant
+style Theme.Dadadada
