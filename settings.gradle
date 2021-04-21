@@ -2,9 +2,9 @@
 include ':core'
 
 include ':net'
+
 include ':Resource'
 include ':Common'
-
 include ':core'
 include ':Log'
 include ':imagerloader'
