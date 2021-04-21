@@ -2,6 +2,9 @@ plugins {
     id 'com.android.application'
 }
 
+def dep = rootProject.ext.dependencies
+def version = rootProject.ext.dependenciesVersion
+
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
@@ -22,6 +25,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    dataBinding {
+        enabled = true
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -41,10 +49,21 @@ dependencies {
 
     implementation project(path: ':Log')
     implementation project(path: ':imagerloader')
+    implementation project(path: ':Common')
+
+    implementation project(path: ':net')
+    implementation project(path: ':Resource')
+    implementation project(path: ':core')
 
     implementation files('libs\\AMap3DMap_7.6.0_AMapNavi_7.6.0_AMapSearch_7.6.0_AMapTrack_1.3.0_AMapLocation_5.2.0_20200915.jar')
-
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+
+
+
+
+
+
 }
