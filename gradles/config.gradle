@@ -11,6 +11,10 @@ ext{
             corektx:"androidx.core:core-ktx:${version.corektx}",
             appcompat: "androidx.appcompat:appcompat:${version.appcompat}",
             constraintlayout: "androidx.constraintlayout:constraintlayout:${version.constraintlayout}",
+            junit: "junit:junit:${version.junit}",
+            ext:"androidx.test.ext:junit:${version.ext}",
+            espresso :"androidx.test.espresso:espresso-core:${version.espresso}",
+
 
             retrofit:"com.squareup.retrofit2:retrofit:$version.retrofit",
             retrofitgson:"com.squareup.retrofit2:converter-gson:$version.retrofitgson",
@@ -29,20 +33,13 @@ ext{
             disklru:"com.jakewharton:disklrucache:$version.disklru",
 
             roomruntime : "androidx.room:room-runtime:$version.room_version",
-            roomcompiler : "androidx.room:room-compiler:$version.room_version",
-
-            picasso: "com.squareup.picasso:picasso:$version.picasso",
-
-            material :"com.google.android.material:material:$version.material",
-            bravh :"com.github.CymChad:BaseRecyclerViewAdapterHelper:$version.bravh",
-
-            okgo:"com.lzy.net:okgo:$version.okgo"
+            roomcompiler : "androidx.room:room-compiler:$version.room_version"
 
     ]
 
     urls=[
-            offline:"http://39.98.153.96:8080/",
-            online:"http://39.98.153.96:8080/"
+            offline:"http://39.100.125.37:8088/",
+            online:"http://39.100.125.37:8088/"
     ]
 
     verifyCode=[
