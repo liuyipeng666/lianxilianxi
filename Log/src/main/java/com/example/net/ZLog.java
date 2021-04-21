@@ -4,8 +4,7 @@ import com.example.net.impl.ConsoleLog;
 import com.example.net.impl.LogCatLog;
 import com.example.net.impl.NetLog;
 
-public
-class ZLog {
+public class ZLog {
 
     private IZLog zlog=null;
 

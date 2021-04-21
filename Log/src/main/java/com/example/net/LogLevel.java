@@ -1,7 +1,6 @@
 package com.example.net;
 
-public
-class LogLevel {
+public class LogLevel {
 
     public static int DEBUG=1;
     public static int INFO=2;
