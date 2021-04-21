@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 include ':net'
+=======
+include ':Resource'
+include ':Common'
+include ':Log'
+
+>>>>>>> 2005a156a261b31340eb7a3829593befb3fec0f9
 include ':imagerloader'
 include ':app'
 rootProject.name = "dadadada"
