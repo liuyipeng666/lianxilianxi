@@ -1,4 +1,6 @@
 
+include ':core'
+
 include ':net'
 include ':Resource'
 include ':Common'
