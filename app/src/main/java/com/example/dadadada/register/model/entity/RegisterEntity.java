@@ -3,25 +3,34 @@ package com.example.dadadada.register.model.entity;
 public class RegisterEntity {
 
 
-    private String imaccount;
-    private String phonenumber;
+    /**
+     * id : 1
+     * username : sample string 2
+     * pwd : sample string 3
+     * sex : sample string 4
+     * birthday : sample string 5
+     */
+
+    private int id;
+    private String username;
     private String pwd;
+    private String sex;
+    private String birthday;
 
-
-    public String getImaccount() {
-        return imaccount;
+    public int getId() {
+        return id;
     }
 
-    public void setImaccount(String imaccount) {
-        this.imaccount = imaccount;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getPhonenumber() {
-        return phonenumber;
+    public String getUsername() {
+        return username;
     }
 
-    public void setPhonenumber(String phonenumber) {
-        this.phonenumber = phonenumber;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPwd() {
@@ -32,21 +41,19 @@ public class RegisterEntity {
         this.pwd = pwd;
     }
 
-    public RegisterEntity() {
+    public String getSex() {
+        return sex;
     }
 
-    public RegisterEntity(String imaccount, String phonenumber, String pwd) {
-        this.imaccount = imaccount;
-        this.phonenumber = phonenumber;
-        this.pwd = pwd;
+    public void setSex(String sex) {
+        this.sex = sex;
     }
 
-    @Override
-    public String toString() {
-        return "RegisterEntity{" +
-                "imaccount='" + imaccount + '\'' +
-                ", phonenumber='" + phonenumber + '\'' +
-                ", pwd='" + pwd + '\'' +
-                '}';
+    public String getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
     }
 }

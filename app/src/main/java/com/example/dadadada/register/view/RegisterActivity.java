@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -47,14 +48,17 @@ public class RegisterActivity extends AppCompatActivity {
         Log.i("www", "register: "+name +"  "+ pwd);
         RegisterEntity registerEntity = new RegisterEntity();
         registerEntity.setPwd(pwd);
-        registerEntity.setPhonenumber(name);
-
+        registerEntity.setUsername(name);
+        registerEntity.setSex("nan");
+        registerEntity.setId(1);
+        registerEntity.setBirthday(""+System.currentTimeMillis());
         RegisterViewModel registerViewModel = new RegisterViewModel(this);
 
         registerViewModel.loginCmd(registerEntity).observe(this, new Observer<BaseRespEntity<RegisterEntity>>() {
             @Override
             public void onChanged(BaseRespEntity<RegisterEntity> entity) {
                 Log.i("www", "onChanged: "+entity.toString());
+                Toast.makeText(RegisterActivity.this, ""+entity.getMsg(), Toast.LENGTH_SHORT).show();
             }
         });
     }
