@@ -43,7 +43,11 @@ public class NetTools {
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addCallAdapterFactory(LiveDataCallAdapterFactory.create())
+<<<<<<< HEAD
                 .baseUrl("http://121.4.241.78:8080/")
+=======
+                .baseUrl("121.4.241.78:8080")
+>>>>>>> 4f0fd895a5ec83fe77a4f6909f7c1118935dacb8
                 .build();
     }
 

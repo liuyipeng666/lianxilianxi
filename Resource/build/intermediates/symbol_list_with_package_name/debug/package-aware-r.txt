@@ -1309,6 +1309,11 @@ drawable ic_pen
 drawable ic_remind
 drawable ic_setting
 drawable ic_share_variant
+drawable main_blackground
+drawable main_edit_search
+drawable main_editground
+drawable main_location
+drawable main_scan
 drawable mtrl_dialog_background
 drawable mtrl_dropdown_arrow
 drawable mtrl_ic_arrow_drop_down
