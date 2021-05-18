@@ -1,16 +1,21 @@
 package com.example.dadadada;
 
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
@@ -20,6 +25,11 @@ import com.amap.api.maps.AMap;
 import com.amap.api.maps.MapView;
 import com.amap.api.maps.model.MyLocationStyle;
 import com.example.dadadada.adapter.TraceListAdapter;
+import com.umeng.socialize.PlatformConfig;
+import com.umeng.socialize.ShareAction;
+import com.umeng.socialize.UMShareAPI;
+import com.umeng.socialize.UMShareListener;
+import com.umeng.socialize.bean.SHARE_MEDIA;
 
 
 import java.text.SimpleDateFormat;
@@ -28,15 +38,21 @@ import java.util.Date;
 import java.util.List;
 
 
-public class MainActivity extends AppCompatActivity implements AMapLocationListener {
+public class MainActivity extends AppCompatActivity implements AMapLocationListener,UMShareListener{
 
     private ListView lv;
     private List<Trace> traceList = new ArrayList<>(10);
     private TraceListAdapter adapter;
-    private MyLocationStyle myLocationStyle;;
+    private MyLocationStyle myLocationStyle;
+    private DrawerLayout drawerLayoutMain;
     private Switch drawerLocationSwitch;
     private TextView drawerShare;
     private TextView drawerSetting;
+    private ImageView drawerDelete;
+    private ImageView drawerHeadimg;
+    private ImageView drawerCamera;
+    private TextView drawerUsername;
+    private TextView drawerIntroduce;
     //声明mlocationClient对象
     public AMapLocationClient mlocationClient;
     //声明mLocationOption对象
@@ -53,7 +69,13 @@ public class MainActivity extends AppCompatActivity implements AMapLocationListe
         if(Build.VERSION.SDK_INT>Build.VERSION_CODES.M){
             requestPermissions(new String[]{
                     "android.permission.ACCESS_COARSE_LOCATION",
-                    "android.permission.ACCESS_FINE_LOCATION"
+                    "android.permission.ACCESS_FINE_LOCATION",
+                    "android.permission.WAKE_LOCK",
+                    "android.permission.BROADCAST_PACKAGE_ADDED",
+                    "android.permission.BROADCAST_PACKAGE_CHANGED",
+                    "android.permission.BROADCAST_PACKAGE_INSTALL",
+                    "android.permission.BROADCAST_PACKAGE_REPLACED",
+                    "android.permission.RECEIVE_BOOT_COMPLETED",
             },100);
         }
         initView();
@@ -127,14 +149,62 @@ public class MainActivity extends AppCompatActivity implements AMapLocationListe
         traceList.add(new Trace("2019/12/12 14:30:00", "活动A     已参加（5/10）人                              下午三点 西二旗餐厅聚会...       "));
         adapter = new TraceListAdapter(this, traceList);
         lv.setAdapter(adapter);
+
+        //关闭侧滑
+        drawerDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawerLayoutMain.closeDrawer(drawerLayoutMain);
+            }
+        });
+
+        //相机
+        drawerCamera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        //分享
+        drawerShare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new ShareAction(MainActivity.this)
+                        .withText("分享成功")
+                        .setDisplayList(SHARE_MEDIA.SINA,SHARE_MEDIA.QQ,SHARE_MEDIA.WEIXIN,SHARE_MEDIA.QZONE)
+                        .setCallback(MainActivity.this)
+                        .open();
+            }
+        });
+
+        drawerSetting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, SettingActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        UMShareAPI.get(MainActivity.this).onActivityResult(requestCode,resultCode,data);
     }
 
     private void initView() {
         mMapView = (MapView) findViewById(R.id.map);
         lv = (ListView) findViewById(R.id.lv);
+        drawerLayoutMain = (DrawerLayout) findViewById(R.id.drawerLayout_main);
         drawerLocationSwitch = (Switch) findViewById(R.id.drawer_location_switch);
         drawerShare = (TextView) findViewById(R.id.drawer_share);
         drawerSetting = (TextView) findViewById(R.id.drawer_setting);
+        drawerDelete = (ImageView) findViewById(R.id.drawer_delete);
+        drawerHeadimg = (ImageView) findViewById(R.id.drawer_headimg);
+        drawerCamera = (ImageView) findViewById(R.id.drawer_camera);
+        drawerUsername = (TextView) findViewById(R.id.drawer_username);
+        drawerIntroduce = (TextView) findViewById(R.id.drawer_introduce);
     }
 
 
@@ -164,5 +234,25 @@ public class MainActivity extends AppCompatActivity implements AMapLocationListe
         super.onPause();
         //在activity执行onPause时执行mMapView.onPause ()，暂停地图的绘制
         mMapView.onPause();
+    }
+
+    @Override
+    public void onStart(SHARE_MEDIA share_media) {
+
+    }
+
+    @Override
+    public void onResult(SHARE_MEDIA share_media) {
+
+    }
+
+    @Override
+    public void onError(SHARE_MEDIA share_media, Throwable throwable) {
+
+    }
+
+    @Override
+    public void onCancel(SHARE_MEDIA share_media) {
+
     }
 }
