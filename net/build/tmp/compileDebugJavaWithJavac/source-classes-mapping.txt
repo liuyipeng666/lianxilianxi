@@ -15,3 +15,4 @@ com/example/net/retrofit/ConsValue.java
  com.example.net.retrofit.ConsValue
 com/example/net/retrofit/NetTools.java
  com.example.net.retrofit.NetTools
+ com.example.net.retrofit.NetTools$1

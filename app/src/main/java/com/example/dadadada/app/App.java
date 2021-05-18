@@ -1,4 +1,4 @@
-package com.example.dadadada;
+package com.example.dadadada.app;
 
 
 import android.app.Application;

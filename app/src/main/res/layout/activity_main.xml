@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:background="#fff"
+    android:id="@+id/drawer"
+    tools:context=".view.MainActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -26,60 +28,74 @@
 
 
         <RelativeLayout
+
+            android:id="@+id/redian"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#F02EA8A4">
 
             <ImageView
                 android:id="@+id/drawer_delete"
-                android:layout_width="wrap_content"
+                android:layout_width="20dp"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_delete"
                 android:layout_alignParentRight="true"
+                android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp"></ImageView>
+                android:src="@drawable/ic_delete"></ImageView>
 
             <ImageView
                 android:id="@+id/drawer_headimg"
-                android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/head_shape"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
                 android:layout_marginTop="40dp"
-                android:layout_centerHorizontal="true"></ImageView>
+                android:src="@drawable/head_shape"></ImageView>
 
             <ImageView
                 android:id="@+id/drawer_camera"
-                android:layout_width="wrap_content"
+                android:layout_width="42dp"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_camera"
+                android:layout_marginLeft="225dp"
                 android:layout_marginTop="45dp"
-                android:layout_marginLeft="225dp"></ImageView>
+                android:src="@drawable/ic_camera"></ImageView>
 
             <TextView
                 android:id="@+id/drawer_username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#FFF"
-                android:text="风清凉"
-                android:textSize="20dp"
-                android:textStyle="bold"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="205dp"></TextView>
+                android:layout_marginTop="205dp"
+                android:text="风清凉"
+                android:textColor="#FFF"
+                android:textSize="20dp"
+                android:textStyle="bold"></TextView>
 
 
             <TextView
                 android:id="@+id/drawer_introduce"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#FFF"
-                android:text="一小段自我介绍"
-                android:textSize="20dp"
-                android:textStyle="bold"
-                android:layout_centerHorizontal="true"
-                android:drawableLeft="@drawable/ic_pen"
                 android:layout_marginTop="240dp"
-                android:layout_marginBottom="15dp"></TextView>
+                android:layout_marginBottom="15dp"
+                android:drawableLeft="@drawable/ic_pen"
+                android:textColor="#FFF"
+                android:textSize="20dp"
+                android:layout_centerHorizontal="true"
+                android:textStyle="bold"
+                android:text="写一段小说明"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                ></TextView>
+
+            <ImageView
+                android:id="@+id/xiaodui"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="255dp"
+                android:layout_marginTop="240dp"
+                android:layout_marginBottom="15dp"
+                android:src="@drawable/fanhui" />
         </RelativeLayout>
 
         <LinearLayout

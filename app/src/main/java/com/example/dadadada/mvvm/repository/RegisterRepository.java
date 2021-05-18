@@ -1,10 +1,10 @@
-package com.example.dadadada.register.repository;
+package com.example.dadadada.mvvm.repository;
 
 import androidx.lifecycle.LiveData;
 
 import com.example.core.BaseRepository;
-import com.example.dadadada.register.model.RegisterModel;
-import com.example.dadadada.register.model.entity.RegisterEntity;
+import com.example.dadadada.mvvm.model.RegisterModel;
+import com.example.dadadada.mvvm.model.entity.RegisterEntity;
 import com.example.net.retrofit.BaseRespEntity;
 
 

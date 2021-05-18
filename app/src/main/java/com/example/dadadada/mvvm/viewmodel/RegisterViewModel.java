@@ -1,11 +1,11 @@
-package com.example.dadadada.register.viewmodel;
+package com.example.dadadada.mvvm.viewmodel;
 
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.LiveData;
 
 import com.example.core.BaseViewModel;
-import com.example.dadadada.register.model.entity.RegisterEntity;
-import com.example.dadadada.register.repository.RegisterRepository;
+import com.example.dadadada.mvvm.model.entity.RegisterEntity;
+import com.example.dadadada.mvvm.repository.RegisterRepository;
 import com.example.net.retrofit.BaseRespEntity;
 
 public class RegisterViewModel extends BaseViewModel<RegisterRepository> {
