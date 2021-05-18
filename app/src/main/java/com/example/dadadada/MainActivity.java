@@ -1,20 +1,27 @@
 package com.example.dadadada;
 
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.provider.MediaStore;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.FileProvider;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.amap.api.location.AMapLocation;
@@ -23,8 +30,16 @@ import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
 import com.amap.api.maps.AMap;
 import com.amap.api.maps.MapView;
+import com.amap.api.maps.model.Circle;
 import com.amap.api.maps.model.MyLocationStyle;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CircleCrop;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.dadadada.adapter.TraceListAdapter;
+import com.example.imagerloader.ImageLoader;
+import com.example.imagerloader.impl.GlideStrategy;
+import com.example.imagerloader.setting.NormalImageSetting;
 import com.umeng.socialize.PlatformConfig;
 import com.umeng.socialize.ShareAction;
 import com.umeng.socialize.UMShareAPI;
@@ -32,6 +47,7 @@ import com.umeng.socialize.UMShareListener;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -53,6 +69,7 @@ public class MainActivity extends AppCompatActivity implements AMapLocationListe
     private ImageView drawerCamera;
     private TextView drawerUsername;
     private TextView drawerIntroduce;
+    private ImageView imgHeadMain;
     //声明mlocationClient对象
     public AMapLocationClient mlocationClient;
     //声明mLocationOption对象
@@ -60,6 +77,7 @@ public class MainActivity extends AppCompatActivity implements AMapLocationListe
     MapView mMapView = null;
     //初始化地图控制器对象
     AMap aMap;
+    private String path="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +94,10 @@ public class MainActivity extends AppCompatActivity implements AMapLocationListe
                     "android.permission.BROADCAST_PACKAGE_INSTALL",
                     "android.permission.BROADCAST_PACKAGE_REPLACED",
                     "android.permission.RECEIVE_BOOT_COMPLETED",
+                    "android.permission.READ_EXTERNAL_STORAGE",
+                    "android.permission.WRITE_EXTERNAL_STORAGE",
+                    "android.permission.CAMERA",
+                    "android.permission.CALL_PHONE"
             },100);
         }
         initView();
@@ -154,7 +176,7 @@ public class MainActivity extends AppCompatActivity implements AMapLocationListe
         drawerDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                drawerLayoutMain.closeDrawer(drawerLayoutMain);
+                drawerLayoutMain.closeDrawer(Gravity.LEFT);
             }
         });
 
@@ -162,7 +184,12 @@ public class MainActivity extends AppCompatActivity implements AMapLocationListe
         drawerCamera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent();
+                intent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
+                path="sdcard/DCIM/Camera/"+createName();
+                Uri uriForFile = FileProvider.getUriForFile(MainActivity.this, "com.example.dadadada", new File(path));
+                intent.putExtra(MediaStore.EXTRA_OUTPUT,uriForFile);
+                startActivityForResult(intent,200);
             }
         });
 
@@ -187,10 +214,22 @@ public class MainActivity extends AppCompatActivity implements AMapLocationListe
         });
     }
 
+    @SuppressLint("SimpleDateFormat")
+    private String createName() {
+        Date date = new Date();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
+        String format = simpleDateFormat.format(date);
+        return "IMG"+format+".jpg";
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         UMShareAPI.get(MainActivity.this).onActivityResult(requestCode,resultCode,data);
+        if (requestCode == 200 && resultCode== Activity.RESULT_OK){
+            Glide.with(MainActivity.this).load(path).apply(RequestOptions.bitmapTransform(new CircleCrop())).into(drawerHeadimg);
+            Glide.with(MainActivity.this).load(path).apply(RequestOptions.bitmapTransform(new CircleCrop())).into(imgHeadMain);
+        }
     }
 
     private void initView() {
@@ -205,6 +244,7 @@ public class MainActivity extends AppCompatActivity implements AMapLocationListe
         drawerCamera = (ImageView) findViewById(R.id.drawer_camera);
         drawerUsername = (TextView) findViewById(R.id.drawer_username);
         drawerIntroduce = (TextView) findViewById(R.id.drawer_introduce);
+        imgHeadMain = (ImageView) findViewById(R.id.img_head_main);
     }
 
 
@@ -253,6 +293,6 @@ public class MainActivity extends AppCompatActivity implements AMapLocationListe
 
     @Override
     public void onCancel(SHARE_MEDIA share_media) {
-
+        Toast.makeText(this, "你取消了分享", Toast.LENGTH_SHORT).show();
     }
 }
