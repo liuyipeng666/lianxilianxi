@@ -2,7 +2,7 @@ package com.example.net.impl;
 
 import android.util.Log;
 
-import com.example.net.BuildConfig;
+import com.example.log.BuildConfig;
 import com.example.net.IZLog;
 import com.example.net.LogLevel;
 

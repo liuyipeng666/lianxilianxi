@@ -1308,6 +1308,11 @@ int drawable ic_pen 0x0
 int drawable ic_remind 0x0
 int drawable ic_setting 0x0
 int drawable ic_share_variant 0x0
+int drawable main_blackground 0x0
+int drawable main_edit_search 0x0
+int drawable main_editground 0x0
+int drawable main_location 0x0
+int drawable main_scan 0x0
 int drawable mtrl_dialog_background 0x0
 int drawable mtrl_dropdown_arrow 0x0
 int drawable mtrl_ic_arrow_drop_down 0x0

@@ -36,15 +36,23 @@
             android:name="com.amap.api.v2.apikey"
             android:value="d689a0b8bbf402ad83c13c319b25ac93"></meta-data>
 
+
+        <service android:name="com.amap.api.location.APSService" />
+
+        <meta-data android:name="com.amap.api.v2.apikey" android:value="d689a0b8bbf402ad83c13c319b25ac93">
+
+        </meta-data>
         <activity android:name=".MainActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
 
-        <service android:name="com.amap.api.location.APSService" />
+        </activity>
+        <service android:name="com.amap.api.location.APSService"></service>
+
     </application>
 
 </manifest>
