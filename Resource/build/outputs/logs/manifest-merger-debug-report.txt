@@ -1,37 +1,37 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\ins5585\Desktop\gitdemo\lianxilianxi\Resource\src\main\AndroidManifest.xml:2:1-5:12
-INJECTED from C:\Users\ins5585\Desktop\gitdemo\lianxilianxi\Resource\src\main\AndroidManifest.xml:2:1-5:12
-INJECTED from C:\Users\ins5585\Desktop\gitdemo\lianxilianxi\Resource\src\main\AndroidManifest.xml:2:1-5:12
-INJECTED from C:\Users\ins5585\Desktop\gitdemo\lianxilianxi\Resource\src\main\AndroidManifest.xml:2:1-5:12
-INJECTED from C:\Users\ins5585\Desktop\gitdemo\lianxilianxi\Resource\src\main\AndroidManifest.xml:2:1-5:12
-INJECTED from C:\Users\ins5585\Desktop\gitdemo\lianxilianxi\Resource\src\main\AndroidManifest.xml:2:1-5:12
-INJECTED from C:\Users\ins5585\Desktop\gitdemo\lianxilianxi\Resource\src\main\AndroidManifest.xml:2:1-5:12
+ADDED from E:\tools\Android_studio-workspace\1808ASX1\lianxilianxi\Resource\src\main\AndroidManifest.xml:2:1-5:12
+INJECTED from E:\tools\Android_studio-workspace\1808ASX1\lianxilianxi\Resource\src\main\AndroidManifest.xml:2:1-5:12
+INJECTED from E:\tools\Android_studio-workspace\1808ASX1\lianxilianxi\Resource\src\main\AndroidManifest.xml:2:1-5:12
+INJECTED from E:\tools\Android_studio-workspace\1808ASX1\lianxilianxi\Resource\src\main\AndroidManifest.xml:2:1-5:12
+INJECTED from E:\tools\Android_studio-workspace\1808ASX1\lianxilianxi\Resource\src\main\AndroidManifest.xml:2:1-5:12
+INJECTED from E:\tools\Android_studio-workspace\1808ASX1\lianxilianxi\Resource\src\main\AndroidManifest.xml:2:1-5:12
+INJECTED from E:\tools\Android_studio-workspace\1808ASX1\lianxilianxi\Resource\src\main\AndroidManifest.xml:2:1-5:12
 	package
-		ADDED from C:\Users\ins5585\Desktop\gitdemo\lianxilianxi\Resource\src\main\AndroidManifest.xml:3:5-35
-		INJECTED from C:\Users\ins5585\Desktop\gitdemo\lianxilianxi\Resource\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\ins5585\Desktop\gitdemo\lianxilianxi\Resource\src\main\AndroidManifest.xml
+		ADDED from E:\tools\Android_studio-workspace\1808ASX1\lianxilianxi\Resource\src\main\AndroidManifest.xml:3:5-35
+		INJECTED from E:\tools\Android_studio-workspace\1808ASX1\lianxilianxi\Resource\src\main\AndroidManifest.xml
+		INJECTED from E:\tools\Android_studio-workspace\1808ASX1\lianxilianxi\Resource\src\main\AndroidManifest.xml
 	android:versionName
-		INJECTED from C:\Users\ins5585\Desktop\gitdemo\lianxilianxi\Resource\src\main\AndroidManifest.xml
-		ADDED from C:\Users\ins5585\Desktop\gitdemo\lianxilianxi\Resource\src\main\AndroidManifest.xml:2:1-5:12
-		INJECTED from C:\Users\ins5585\Desktop\gitdemo\lianxilianxi\Resource\src\main\AndroidManifest.xml
+		INJECTED from E:\tools\Android_studio-workspace\1808ASX1\lianxilianxi\Resource\src\main\AndroidManifest.xml
+		ADDED from E:\tools\Android_studio-workspace\1808ASX1\lianxilianxi\Resource\src\main\AndroidManifest.xml:2:1-5:12
+		INJECTED from E:\tools\Android_studio-workspace\1808ASX1\lianxilianxi\Resource\src\main\AndroidManifest.xml
 	android:versionCode
-		INJECTED from C:\Users\ins5585\Desktop\gitdemo\lianxilianxi\Resource\src\main\AndroidManifest.xml
-		ADDED from C:\Users\ins5585\Desktop\gitdemo\lianxilianxi\Resource\src\main\AndroidManifest.xml:2:1-5:12
-		INJECTED from C:\Users\ins5585\Desktop\gitdemo\lianxilianxi\Resource\src\main\AndroidManifest.xml
+		INJECTED from E:\tools\Android_studio-workspace\1808ASX1\lianxilianxi\Resource\src\main\AndroidManifest.xml
+		ADDED from E:\tools\Android_studio-workspace\1808ASX1\lianxilianxi\Resource\src\main\AndroidManifest.xml:2:1-5:12
+		INJECTED from E:\tools\Android_studio-workspace\1808ASX1\lianxilianxi\Resource\src\main\AndroidManifest.xml
 	xmlns:android
-		ADDED from C:\Users\ins5585\Desktop\gitdemo\lianxilianxi\Resource\src\main\AndroidManifest.xml:2:11-69
+		ADDED from E:\tools\Android_studio-workspace\1808ASX1\lianxilianxi\Resource\src\main\AndroidManifest.xml:2:11-69
 uses-sdk
-INJECTED from C:\Users\ins5585\Desktop\gitdemo\lianxilianxi\Resource\src\main\AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from C:\Users\ins5585\Desktop\gitdemo\lianxilianxi\Resource\src\main\AndroidManifest.xml
-INJECTED from C:\Users\ins5585\Desktop\gitdemo\lianxilianxi\Resource\src\main\AndroidManifest.xml
-INJECTED from C:\Users\ins5585\Desktop\gitdemo\lianxilianxi\Resource\src\main\AndroidManifest.xml
-INJECTED from C:\Users\ins5585\Desktop\gitdemo\lianxilianxi\Resource\src\main\AndroidManifest.xml
+INJECTED from E:\tools\Android_studio-workspace\1808ASX1\lianxilianxi\Resource\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from E:\tools\Android_studio-workspace\1808ASX1\lianxilianxi\Resource\src\main\AndroidManifest.xml
+INJECTED from E:\tools\Android_studio-workspace\1808ASX1\lianxilianxi\Resource\src\main\AndroidManifest.xml
+INJECTED from E:\tools\Android_studio-workspace\1808ASX1\lianxilianxi\Resource\src\main\AndroidManifest.xml
+INJECTED from E:\tools\Android_studio-workspace\1808ASX1\lianxilianxi\Resource\src\main\AndroidManifest.xml
 	android:targetSdkVersion
-		INJECTED from C:\Users\ins5585\Desktop\gitdemo\lianxilianxi\Resource\src\main\AndroidManifest.xml
-		ADDED from C:\Users\ins5585\Desktop\gitdemo\lianxilianxi\Resource\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\ins5585\Desktop\gitdemo\lianxilianxi\Resource\src\main\AndroidManifest.xml
+		INJECTED from E:\tools\Android_studio-workspace\1808ASX1\lianxilianxi\Resource\src\main\AndroidManifest.xml
+		ADDED from E:\tools\Android_studio-workspace\1808ASX1\lianxilianxi\Resource\src\main\AndroidManifest.xml
+		INJECTED from E:\tools\Android_studio-workspace\1808ASX1\lianxilianxi\Resource\src\main\AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from C:\Users\ins5585\Desktop\gitdemo\lianxilianxi\Resource\src\main\AndroidManifest.xml
-		ADDED from C:\Users\ins5585\Desktop\gitdemo\lianxilianxi\Resource\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\ins5585\Desktop\gitdemo\lianxilianxi\Resource\src\main\AndroidManifest.xml
+		INJECTED from E:\tools\Android_studio-workspace\1808ASX1\lianxilianxi\Resource\src\main\AndroidManifest.xml
+		ADDED from E:\tools\Android_studio-workspace\1808ASX1\lianxilianxi\Resource\src\main\AndroidManifest.xml
+		INJECTED from E:\tools\Android_studio-workspace\1808ASX1\lianxilianxi\Resource\src\main\AndroidManifest.xml
