@@ -4,13 +4,11 @@ package com.example.dadadada.view;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.amap.api.maps.AMap;
 import com.amap.api.maps.MapView;
@@ -33,9 +31,6 @@ public class MainActivity extends AppCompatActivity {
     private Switch drawerRemindSwitch;
     private TextView drawerShare;
     private TextView drawerSetting;
-    private DrawerLayout drawer;
-    private RelativeLayout redian;
-    private ImageView xiaodui;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
