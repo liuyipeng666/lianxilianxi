@@ -1,10 +1,8 @@
 package com.example.dadadada.view;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Switch;
@@ -18,7 +16,7 @@ import com.amap.api.maps.AMap;
 import com.amap.api.maps.MapView;
 import com.example.dadadada.R;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity {
     MapView mMapView = null;
     //初始化地图控制器对象
     AMap aMap;
@@ -99,43 +97,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         drawerRemindSwitch = (Switch) findViewById(R.id.drawer_remind_switch);
         drawerShare = (TextView) findViewById(R.id.drawer_share);
         drawerSetting = (TextView) findViewById(R.id.drawer_setting);
-        drawer = (DrawerLayout) findViewById(R.id.drawer);
-        redian = (RelativeLayout) findViewById(R.id.redian);
-        xiaodui = (ImageView) findViewById(R.id.xiaodui);
-    }
-
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.drawer_delete:
-                drawer.closeDrawers();
-                break;
-            case R.id.drawer_camera:
-                //调起摄像机
-
-                break;
-            case R.id.drawer_imgs:
-                //调起图库
-
-                break;
-            case R.id.drawer_username:
-
-                break;
-            case R.id.xiaodui:
-                String s = drawerIntroduce.getText().toString();
-                if (!s.isEmpty()) {
-                    drawerIntroduce.setText("" + s);
-                }
-
-                break;
-
-        }
-
-
-    }
-
-    public void shexiangji() {
-        Intent intent = new Intent();
-
     }
 }

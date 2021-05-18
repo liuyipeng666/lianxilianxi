@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout
+    android:id="@+id/drawerLayout_main"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fff"
-    android:id="@+id/drawer"
     tools:context=".view.MainActivity">
-    <LinearLayout
 
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
 
         <com.amap.api.maps.MapView
             android:id="@+id/map"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-    </LinearLayout>
+
+
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_gravity="left"
             android:layout_marginTop="10dp">
 
             <ImageView
+                android:id="@+id/img_head_main"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginLeft="10dp"
@@ -86,6 +86,8 @@
                 android:dividerHeight="0dp" />
         </LinearLayout>
 
+    </RelativeLayout>
+
     <LinearLayout
         android:layout_width="300dp"
         android:layout_height="match_parent"
@@ -94,82 +96,66 @@
 
 
         <RelativeLayout
-
-            android:id="@+id/redian"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#F02EA8A4">
 
             <ImageView
                 android:id="@+id/drawer_delete"
-                android:layout_width="20dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:src="@drawable/ic_delete"
                 android:layout_alignParentRight="true"
-                android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
-                android:src="@drawable/ic_delete"></ImageView>
+                android:layout_marginTop="10dp"></ImageView>
 
             <ImageView
                 android:id="@+id/drawer_headimg"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
                 android:layout_gravity="center"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/head_shape"
                 android:layout_marginTop="40dp"
-                android:src="@drawable/head_shape"></ImageView>
+                android:layout_centerHorizontal="true"></ImageView>
 
             <ImageView
                 android:id="@+id/drawer_camera"
-                android:layout_width="42dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="225dp"
-                android:layout_marginTop="45dp"
-                android:src="@drawable/ic_camera"></ImageView>
+                android:src="@drawable/ic_camera"
+                android:layout_marginTop="35dp"
+                android:layout_marginLeft="225dp"></ImageView>
 
             <TextView
                 android:id="@+id/drawer_username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="205dp"
-                android:text="风清凉"
                 android:textColor="#FFF"
+                android:text="风清凉"
                 android:textSize="20dp"
-                android:textStyle="bold"></TextView>
-
+                android:textStyle="bold"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="200dp"></TextView>
 
 
             <TextView
                 android:id="@+id/drawer_introduce"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="240dp"
-                android:layout_marginBottom="15dp"
-                android:drawableLeft="@drawable/ic_pen"
                 android:textColor="#FFF"
+                android:text="一小段自我介绍"
                 android:textSize="20dp"
-                android:layout_centerHorizontal="true"
                 android:textStyle="bold"
-                android:text="写一段小说明"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                ></TextView>
-
-            <ImageView
-                android:id="@+id/xiaodui"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginLeft="255dp"
-                android:layout_marginTop="240dp"
-                android:layout_marginBottom="15dp"
-                android:src="@drawable/fanhui" />
+                android:layout_centerHorizontal="true"
+                android:drawableLeft="@drawable/ic_pen"
+                android:layout_marginTop="230dp"
+                android:layout_marginBottom="15dp"></TextView>
         </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-
             android:background="#C6FFFFFF">
 
             <LinearLayout
@@ -193,7 +179,7 @@
                     android:paddingLeft="30dp"></TextView>
 
             </LinearLayout>
-
+            二组组员曹蓝之 17610665019 19:54:29
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -289,6 +275,7 @@
 
             </LinearLayout>
 
+            二组组员曹蓝之 17610665019 19:54:38
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -347,8 +334,8 @@
 
         </LinearLayout>
 
-    </LinearLayout>
 
+    </LinearLayout>
 
 
 </androidx.drawerlayout.widget.DrawerLayout>

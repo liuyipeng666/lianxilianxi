@@ -2,6 +2,7 @@ com/example/net/retrofit/TokenRespEntity.java
  com.example.net.retrofit.TokenRespEntity
 com/example/net/retrofit/NetTools.java
  com.example.net.retrofit.NetTools
+ com.example.net.retrofit.NetTools$1
 com/example/net/retrofit/LiveDataCallAdapter.java
  com.example.net.retrofit.LiveDataCallAdapter
  com.example.net.retrofit.LiveDataCallAdapter$1
@@ -9,15 +10,9 @@ com/example/net/retrofit/LiveDataCallAdapterFactory.java
  com.example.net.retrofit.LiveDataCallAdapterFactory
 com/example/net/retrofit/ConsValue.java
  com.example.net.retrofit.ConsValue
-<<<<<<< HEAD
-com/example/net/retrofit/NetTools.java
- com.example.net.retrofit.NetTools
- com.example.net.retrofit.NetTools$1
-=======
 com/example/net/retrofit/TokenApi.java
  com.example.net.retrofit.TokenApi
 com/example/net/retrofit/BaseRespEntity.java
  com.example.net.retrofit.BaseRespEntity
 com/example/net/BuildConfig.java
  com.example.net.BuildConfig
->>>>>>> 4f0fd895a5ec83fe77a4f6909f7c1118935dacb8
