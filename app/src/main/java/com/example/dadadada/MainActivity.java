@@ -4,6 +4,7 @@ package com.example.dadadada;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Switch;
@@ -30,17 +32,13 @@ import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
 import com.amap.api.maps.AMap;
 import com.amap.api.maps.MapView;
-import com.amap.api.maps.model.Circle;
 import com.amap.api.maps.model.MyLocationStyle;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.dadadada.adapter.TraceListAdapter;
-import com.example.imagerloader.ImageLoader;
-import com.example.imagerloader.impl.GlideStrategy;
-import com.example.imagerloader.setting.NormalImageSetting;
-import com.umeng.socialize.PlatformConfig;
+import com.example.dadadada.view.LoginActivity;
+import com.example.dadadada.view.SettingActivity;
 import com.umeng.socialize.ShareAction;
 import com.umeng.socialize.UMShareAPI;
 import com.umeng.socialize.UMShareListener;
@@ -102,14 +100,21 @@ public class MainActivity extends AppCompatActivity implements AMapLocationListe
         }
         initView();
         initData();
+        //判断sp是否存在用户
+        SharedPreferences tLapp = getSharedPreferences("TLapp", MODE_PRIVATE);
+        String user = tLapp.getString("user", "空");
+        String pass = tLapp.getString("pass", "空");
+        if (user.equals("空") && !pass.equals("空")){
+
+        }else{
+            drawerUsername.setText(user);
+        }
         //在activity执行onCreate时执行mMapView.onCreate(savedInstanceState)，创建地图
         // 此方法须覆写，虚拟机需要在很多情况下保存地图绘制的当前状态。
         mMapView.onCreate(savedInstanceState);
         if (aMap == null) {
             aMap = mMapView.getMap();
         }
-        mapinit();
-
     }
 
     @Override
@@ -134,12 +139,12 @@ public class MainActivity extends AppCompatActivity implements AMapLocationListe
         }
     }
 
-    private void mapinit() {
+    private void mapinit(boolean isChecked) {
         myLocationStyle = new MyLocationStyle();//初始化定位蓝点样式类myLocationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_LOCATION_ROTATE);//连续定位、且将视角移动到地图中心点，定位点依照设备方向旋转，并且会跟随设备移动。（1秒1次定位）如果不设置myLocationType，默认也会执行此种模式。
         myLocationStyle.interval(2000); //设置连续定位模式下的定位间隔，只在连续定位模式下生效，单次定位模式下不会生效。单位为毫秒。
         aMap.setMyLocationStyle(myLocationStyle);//设置定位蓝点的Style
         //aMap.getUiSettings().setMyLocationButtonEnabled(true);设置默认定位按钮是否显示，非必需设置。
-        aMap.setMyLocationEnabled(true);// 设置为true表示启动显示定位蓝点，false表示隐藏定位蓝点并不进行定位，默认是false。
+        aMap.setMyLocationEnabled(isChecked);// 设置为true表示启动显示定位蓝点，false表示隐藏定位蓝点并不进行定位，默认是false。
         mlocationClient = new AMapLocationClient(this);
         //初始化定位参数
         mLocationOption = new AMapLocationClientOption();
@@ -205,11 +210,39 @@ public class MainActivity extends AppCompatActivity implements AMapLocationListe
             }
         });
 
+        //设置
         drawerSetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, SettingActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        //跳转登录页面
+        drawerUsername.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(drawerUsername.getText().equals("未登录")){
+                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                }
+            }
+        });
+
+        //展开侧拉
+        imgHeadMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawerLayoutMain.openDrawer(Gravity.LEFT);
+            }
+        });
+
+        //是否定位
+        drawerLocationSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                mapinit(isChecked);
             }
         });
     }

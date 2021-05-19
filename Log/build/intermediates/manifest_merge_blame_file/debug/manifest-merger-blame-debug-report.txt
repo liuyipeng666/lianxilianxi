@@ -6,8 +6,8 @@
 6
 7    <uses-sdk
 8        android:minSdkVersion="18"
-8-->D:\dadadada2\Log\src\main\AndroidManifest.xml
+8-->E:\tools\Android_studio-workspace\1808ASX1\lianxilianxi\Log\src\main\AndroidManifest.xml
 9        android:targetSdkVersion="30" />
-9-->D:\dadadada2\Log\src\main\AndroidManifest.xml
+9-->E:\tools\Android_studio-workspace\1808ASX1\lianxilianxi\Log\src\main\AndroidManifest.xml
 10
 11</manifest>

@@ -131,7 +131,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#FFF"
-                android:text="风清凉"
+                android:text="未登录"
                 android:textSize="20dp"
                 android:textStyle="bold"
                 android:layout_centerHorizontal="true"

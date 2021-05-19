@@ -1,13 +1,8 @@
 com/example/net/retrofit/TokenRespEntity.java
  com.example.net.retrofit.TokenRespEntity
-<<<<<<< HEAD
 com/example/net/retrofit/NetTools.java
  com.example.net.retrofit.NetTools
  com.example.net.retrofit.NetTools$1
-=======
-com/example/net/BuildConfig.java
- com.example.net.BuildConfig
->>>>>>> fbaf9b10914f474b10e352fe92cfe1795207c42f
 com/example/net/retrofit/LiveDataCallAdapter.java
  com.example.net.retrofit.LiveDataCallAdapter
  com.example.net.retrofit.LiveDataCallAdapter$1
@@ -19,5 +14,5 @@ com/example/net/retrofit/TokenApi.java
  com.example.net.retrofit.TokenApi
 com/example/net/retrofit/BaseRespEntity.java
  com.example.net.retrofit.BaseRespEntity
-com/example/net/retrofit/NetTools.java
- com.example.net.retrofit.NetTools
+com/example/net/BuildConfig.java
+ com.example.net.BuildConfig
