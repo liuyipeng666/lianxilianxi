@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 
+import com.example.dadadada.MainActivity;
 import com.example.dadadada.R;
 import com.example.dadadada.mvvm.model.entity.LoginEntity;
 import com.example.dadadada.mvvm.viewmodel.LoginViewModel;
@@ -69,7 +70,7 @@ public class LoginActivity extends AppCompatActivity {
                 public void onChanged(BaseRespEntity<LoginEntity> loginEntityBaseRespEntity) {
                     if(loginEntityBaseRespEntity.getMsg().equals("请求成功")){
                         //登录成功
-                        startActivity(new Intent(LoginActivity.this,MainActivity.class));
+                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
                         finish();
                     }else{
                         loginPwd.getText().clear();
