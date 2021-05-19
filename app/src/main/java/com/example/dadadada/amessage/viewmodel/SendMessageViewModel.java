@@ -4,7 +4,7 @@ import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.LiveData;
 
 import com.example.core.BaseViewModel;
-import com.example.dadadada.amessage.entity.ReceiveMessageEntity;
+import com.example.dadadada.amessage.entity.ReceiveMsgEntity;
 import com.example.dadadada.amessage.entity.SendMessageEntity;
 import com.example.dadadada.amessage.repository.SendMessageRepository;
 import com.example.net.retrofit.BaseRespEntity;
@@ -29,7 +29,7 @@ public class SendMessageViewModel extends BaseViewModel<SendMessageRepository> {
 
     }
 
-    public LiveData<BaseRespEntity<SendMessageEntity>> getSend(ReceiveMessageEntity code){
+    public LiveData<BaseRespEntity<SendMessageEntity>> getSend(ReceiveMsgEntity code){
         return mRepository.getSend(code);
     }
 }
