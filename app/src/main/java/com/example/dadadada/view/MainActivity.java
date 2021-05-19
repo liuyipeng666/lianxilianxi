@@ -1,4 +1,4 @@
-package com.example.dadadada;
+package com.example.dadadada.view;
 
 
 import android.annotation.SuppressLint;
@@ -30,22 +30,18 @@ import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
 import com.amap.api.maps.AMap;
 import com.amap.api.maps.MapView;
-import com.amap.api.maps.model.Circle;
 import com.amap.api.maps.model.MyLocationStyle;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.dadadada.R;
+import com.example.dadadada.SettingActivity;
+import com.example.dadadada.Trace;
 import com.example.dadadada.adapter.TraceListAdapter;
-import com.example.imagerloader.ImageLoader;
-import com.example.imagerloader.impl.GlideStrategy;
-import com.example.imagerloader.setting.NormalImageSetting;
-import com.umeng.socialize.PlatformConfig;
 import com.umeng.socialize.ShareAction;
 import com.umeng.socialize.UMShareAPI;
 import com.umeng.socialize.UMShareListener;
 import com.umeng.socialize.bean.SHARE_MEDIA;
-
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -120,7 +116,7 @@ public class MainActivity extends AppCompatActivity implements AMapLocationListe
                 amapLocation.getLocationType();//获取当前定位结果来源，如网络定位结果，详见定位类型表
                 double latitude = amapLocation.getLatitude();//获取纬度
                 double longitude = amapLocation.getLongitude();//获取经度
-                Log.d("123", "获取经度:"+longitude + "获取纬度" + latitude);
+              //  Log.d("123", "获取经度:"+longitude + "获取纬度" + latitude);
                 amapLocation.getAccuracy();//获取精度信息
                 SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 Date date = new Date(amapLocation.getTime());

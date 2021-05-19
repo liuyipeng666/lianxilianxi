@@ -2,6 +2,7 @@ package com.example.dadadada.view;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,9 +13,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 
-import com.example.dadadada.MainActivity;
 import com.example.dadadada.R;
 import com.example.dadadada.mvvm.model.entity.LoginEntity;
+import com.example.dadadada.mvvm.model.entity.LoginFanEntity;
 import com.example.dadadada.mvvm.viewmodel.LoginViewModel;
 import com.example.net.retrofit.BaseRespEntity;
 
@@ -65,12 +66,14 @@ public class LoginActivity extends AppCompatActivity {
         loginEntity.setPwd(pwd);
         if(!phonenumber.isEmpty() && !pwd.isEmpty()){
             LoginViewModel loginViewModel = new LoginViewModel(this);
-            loginViewModel.logincmd(loginEntity).observe(this, new Observer<BaseRespEntity<LoginEntity>>() {
+            loginViewModel.logincmd(loginEntity).observe(this, new Observer<BaseRespEntity<LoginFanEntity>>() {
                 @Override
-                public void onChanged(BaseRespEntity<LoginEntity> loginEntityBaseRespEntity) {
+                public void onChanged(BaseRespEntity<LoginFanEntity> loginEntityBaseRespEntity) {
                     if(loginEntityBaseRespEntity.getMsg().equals("请求成功")){
                         //登录成功
-                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                        String token = loginEntityBaseRespEntity.getData(LoginFanEntity.class).getToken();
+                        Log.i("www", "onChanged: "+token);
+                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
                         finish();
                     }else{
                         loginPwd.getText().clear();
