@@ -19,7 +19,7 @@ import java.util.List;
 
 public class LianXiRenActivity extends AppCompatActivity {
 
-
+private int aa;
     private RecyclerView rv;
     private List<FriendsEntity> mList = new ArrayList<>();
     private FriendsTokenAdapter friendsTokenAdapter;
