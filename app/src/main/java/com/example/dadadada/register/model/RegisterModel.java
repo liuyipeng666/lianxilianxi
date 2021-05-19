@@ -14,7 +14,6 @@ public class RegisterModel implements IModel {
 
         RegisterApi api = NetTools.getInstance().create(RegisterApi.class);
 
-
         return api.register(userEntity);
     }
 }

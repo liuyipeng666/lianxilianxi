@@ -16,7 +16,9 @@ import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
 import com.amap.api.maps.AMap;
 import com.amap.api.maps.MapView;
+import com.amap.api.maps.model.Circle;
 import com.amap.api.maps.model.MyLocationStyle;
+import com.bumptech.glide.Glide;
 import com.example.dadadada.timezhou.Trace;
 import com.example.dadadada.timezhou.TraceListAdapter;
 
@@ -45,6 +47,8 @@ public class MainActivity extends AppCompatActivity implements AMapLocationListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
         //动态权限
         if(Build.VERSION.SDK_INT>Build.VERSION_CODES.M){
             requestPermissions(new String[]{
