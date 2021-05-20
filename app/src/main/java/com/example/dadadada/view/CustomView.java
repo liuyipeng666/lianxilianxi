@@ -13,7 +13,7 @@ public class CustomView extends ViewGroup {
     /**
      * 起始x,y坐标
      */
-    private int x=100;
+    private int x=150;
     private int  y = 0;
     /**
      * 当前viewGroup的宽高
@@ -62,8 +62,8 @@ public class CustomView extends ViewGroup {
             //根据索引获取具体的View
             View view = getChildAt(i);
             //layout方法传递 4个参数  左上右下
-            int viewWidth = view.getMeasuredWidth()*3/4;
-            int viewHeight = view.getMeasuredHeight()*3/4;
+            int viewWidth = view.getMeasuredWidth()/2;
+            int viewHeight = view.getMeasuredHeight()/2;
 
             //如果当前的x不大于viewGroup的宽  x累加   否则 x=0 y累加
             if ((x + viewWidth+xSpace)> layoutWidth) {
