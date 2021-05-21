@@ -54,8 +54,24 @@ public class NetTools {
                 .readTimeout(10, TimeUnit.SECONDS)
                 .writeTimeout(10, TimeUnit.SECONDS)
                 .addNetworkInterceptor(createNetworkInterceptor())
-                .addInterceptor(createTokenInterceptor())
+                .addInterceptor(createToken())
                 .build();
+    }
+
+    private Interceptor createToken() {
+      Interceptor interceptor=  new Interceptor() {
+
+          @Override
+          public Response intercept(Chain chain) throws IOException {
+              Request request = chain.request();
+              Request token = request.newBuilder().addHeader("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMjMifQ.xKPoMpjMrGHF2iDgqhXrvyypo8HGEZtqDcnND2tQyPo").build();
+              Response proceed = chain.proceed(token);
+
+              return proceed;
+          }
+      };
+
+    return interceptor;
     }
 
     // 创建处理Token的自定义拦截器

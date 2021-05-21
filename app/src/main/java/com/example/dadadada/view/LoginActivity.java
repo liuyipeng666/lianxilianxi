@@ -1,6 +1,7 @@
 package com.example.dadadada.view;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -64,25 +65,29 @@ public class LoginActivity extends AppCompatActivity {
         LoginEntity loginEntity = new LoginEntity();
         loginEntity.setPhonenumber(phonenumber);
         loginEntity.setPwd(pwd);
-        if(!phonenumber.isEmpty() && !pwd.isEmpty()){
+        if (!phonenumber.isEmpty() && !pwd.isEmpty()) {
             LoginViewModel loginViewModel = new LoginViewModel(this);
             loginViewModel.logincmd(loginEntity).observe(this, new Observer<BaseRespEntity<LoginFanEntity>>() {
                 @Override
                 public void onChanged(BaseRespEntity<LoginFanEntity> loginEntityBaseRespEntity) {
-                    if(loginEntityBaseRespEntity.getMsg().equals("请求成功")){
+                    if (loginEntityBaseRespEntity.getMsg().equals("请求成功")) {
                         //登录成功
                         String token = loginEntityBaseRespEntity.getData(LoginFanEntity.class).getToken();
-                        Log.i("www", "onChanged: "+token);
+                        Log.i("www", "onChanged: " + token);
+//                        SharedPreferences sp = getSharedPreferences("san", MODE_PRIVATE);
+//                        SharedPreferences.Editor edit = sp.edit();
+//                        edit.putString("token", token);
+//                        edit.commit();
                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
                         finish();
-                    }else{
+                    } else {
                         loginPwd.getText().clear();
                         Toast.makeText(LoginActivity.this, "输入手机号或密码错误", Toast.LENGTH_SHORT).show();
                     }
                 }
             });
 
-        }else{
+        } else {
 
             Toast.makeText(this, "请输入手机号和密码", Toast.LENGTH_SHORT).show();
             loginPwd.getText().clear();
