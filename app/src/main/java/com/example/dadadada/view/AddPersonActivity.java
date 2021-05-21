@@ -1,7 +1,6 @@
 package com.example.dadadada.view;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -42,13 +41,6 @@ public class AddPersonActivity extends AppCompatActivity {
             }
         });
 
-
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Log.i("www", "onStart: ");
         tab();
     }
 

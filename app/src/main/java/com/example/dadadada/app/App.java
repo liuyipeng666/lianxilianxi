@@ -2,6 +2,7 @@ package com.example.dadadada.app;
 
 
 import android.app.Application;
+import android.content.Context;
 
 import androidx.multidex.MultiDex;
 
@@ -11,8 +12,10 @@ import com.example.net.ZLog;
 import com.example.net.ZLogManager;
 import com.umeng.commonsdk.UMConfigure;
 import com.umeng.socialize.PlatformConfig;
+import com.uuzuche.lib_zxing.activity.ZXingLibrary;
 
 public class App extends Application {
+    private Context context;
     @Override
     public void onCreate() {
         super.onCreate();
@@ -21,7 +24,8 @@ public class App extends Application {
                 .setLevel(LogLevel.DEBUG)
                 .setTag("1234")
                 .build();
-
+        ZXingLibrary.initDisplayOpinion(this);
+        context=getApplicationContext();
         ZLogManager.getInstance().init(zlog);
         MultiDex.install(App.this);
 

@@ -4,62 +4,78 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 
 import com.example.dadadada.R;
+import com.example.dadadada.adapter.AddPersonAdapter;
+import com.google.android.material.tabs.TabLayout;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link AddGroupFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+import java.util.List;
+
 public class AddGroupFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public AddGroupFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment AddGroupFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static AddGroupFragment newInstance(String param1, String param2) {
-        AddGroupFragment fragment = new AddGroupFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+    private EditText edSou;
+    private TextView chuangjianqun;
+    private TextView qunMianduimian;
+    private ViewPager qunVp;
+    private List<String> title = new ArrayList<>();
+    private List<Fragment> list = new ArrayList<>();
+    private TabLayout qunTab;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_add_group, container, false);
+        View inflate = inflater.inflate(R.layout.fragment_add_group, container, false);
+        edSou = (EditText) inflate.findViewById(R.id.ed_sou);
+        chuangjianqun = (TextView) inflate.findViewById(R.id.chuangjianqun);
+        qunMianduimian = (TextView) inflate.findViewById(R.id.qun_mianduimian);
+        qunVp = (ViewPager) inflate.findViewById(R.id.qun_vp);
+        qunTab = (TabLayout)inflate. findViewById(R.id.qun_tab);
+        tab();
+
+        chuangjianqun.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cjqun();
+            }
+        });
+
+        qunMianduimian.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                saoma();
+            }
+        });
+
+
+        return inflate;
+    }
+
+    private void tab() {
+        title.add("游戏");
+        title.add("粉丝");
+        title.add("交友");
+        list.add(new GameFragment());
+        list.add(new FansFragment());
+        list.add(new PalFragment());
+        AddPersonAdapter addPersonAdapter = new AddPersonAdapter(getChildFragmentManager(), list, title);
+
+
+        qunVp.setAdapter(addPersonAdapter);
+        qunTab.setupWithViewPager(qunVp);
+
+    }
+
+    private void saoma() {
+    }
+
+    private void cjqun() {
+
+
     }
 }

@@ -16,4 +16,7 @@ public interface UserApi {
 
     @POST("/user/login")
     LiveData<BaseRespEntity<LoginFanEntity>> login(@Body LoginEntity entity);
+
+
+
 }

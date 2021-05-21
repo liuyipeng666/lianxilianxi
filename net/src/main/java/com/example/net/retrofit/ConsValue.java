@@ -8,5 +8,5 @@ public class ConsValue {
      */
     public static  final int TIMEOUT_VALUE=20;
 
-    public static final String AUTHCODE="341de11517517819a16213218f10712d1df1fa1221471591";
+    public static final String TOKEN="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMjMifQ.xKPoMpjMrGHF2iDgqhXrvyypo8HGEZtqDcnND2tQyPo";
 }

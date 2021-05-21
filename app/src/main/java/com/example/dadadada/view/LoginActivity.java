@@ -1,8 +1,8 @@
 package com.example.dadadada.view;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -56,6 +56,9 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(new Intent(LoginActivity.this, ForgetActivity.class));
             }
         });
+
+
+
     }
 
     private void loginn() {
@@ -71,8 +74,16 @@ public class LoginActivity extends AppCompatActivity {
                 public void onChanged(BaseRespEntity<LoginFanEntity> loginEntityBaseRespEntity) {
                     if(loginEntityBaseRespEntity.getMsg().equals("请求成功")){
                         //登录成功
+                        int id = loginEntityBaseRespEntity.getData().getId();
+
                         String token = loginEntityBaseRespEntity.getData(LoginFanEntity.class).getToken();
-                        Log.i("www", "onChanged: "+token);
+                        SharedPreferences tLapp = getSharedPreferences("TLapp", MODE_PRIVATE);
+                        SharedPreferences.Editor edit = tLapp.edit();
+                        edit.putString("token",token);
+                        edit.putString("username",phonenumber);
+                        edit.putString("pwd",pwd);
+                        edit.putString("id",id+"");
+                        edit.commit();
                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
                         finish();
                     }else{

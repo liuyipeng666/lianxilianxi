@@ -38,8 +38,8 @@ ext{
     ]
 
     urls=[
-            offline:"http://39.100.125.37:8088/",
-            online:"http://39.100.125.37:8088/"
+            offline:"http://121.4.241.78:8080/",
+            online:"http://121.4.241.78:8080/"
     ]
 
     verifyCode=[

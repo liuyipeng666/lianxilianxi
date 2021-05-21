@@ -4,11 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".view.ContactActivity">
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        layout="@layout/title_layout"
+        />
     <include
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         layout="@layout/item_sou"
         />
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/ree1"
+            android:layout_width="0dp"
+            android:layout_weight="9"
+            android:layout_height="match_parent"
+            />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/ree2"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            />
+    </LinearLayout>
 </LinearLayout>

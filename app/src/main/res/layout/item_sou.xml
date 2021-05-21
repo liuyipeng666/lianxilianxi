@@ -10,6 +10,9 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@drawable/sousuo"
+        android:focusable="true"
+
+        android:focusableInTouchMode="true"
         android:hint="🔍🔍🔍 搜索账号/手机号/昵称"
         />
 </LinearLayout>

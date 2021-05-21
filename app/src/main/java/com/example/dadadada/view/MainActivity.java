@@ -38,6 +38,7 @@ import com.example.dadadada.R;
 import com.example.dadadada.SettingActivity;
 import com.example.dadadada.Trace;
 import com.example.dadadada.adapter.TraceListAdapter;
+import com.example.dadadada.common.SpUtils;
 import com.umeng.socialize.ShareAction;
 import com.umeng.socialize.UMShareAPI;
 import com.umeng.socialize.UMShareListener;
@@ -93,7 +94,9 @@ public class MainActivity extends AppCompatActivity implements AMapLocationListe
                     "android.permission.READ_EXTERNAL_STORAGE",
                     "android.permission.WRITE_EXTERNAL_STORAGE",
                     "android.permission.CAMERA",
-                    "android.permission.CALL_PHONE"
+                    "android.permission.CALL_PHONE",
+                    "android.permission.READ_CONTACTS",
+                    "android.permission.WRITE_CONTACTS"
             },100);
         }
         initView();
@@ -105,6 +108,22 @@ public class MainActivity extends AppCompatActivity implements AMapLocationListe
             aMap = mMapView.getMap();
         }
         mapinit();
+        imgHeadMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String username = SpUtils.name(MainActivity.this);
+                if(username==null){
+                    startActivity(new Intent(MainActivity.this,LoginActivity.class));
+                }else{
+                    Toast.makeText(MainActivity.this, "登录了", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+
+
+
+
 
     }
 
@@ -208,6 +227,11 @@ public class MainActivity extends AppCompatActivity implements AMapLocationListe
                 startActivity(intent);
             }
         });
+        String username = SpUtils.name(MainActivity.this);
+        if(username!=null){
+            drawerUsername.setText(""+username);
+        }
+
     }
 
     @SuppressLint("SimpleDateFormat")
@@ -227,6 +251,7 @@ public class MainActivity extends AppCompatActivity implements AMapLocationListe
             Glide.with(MainActivity.this).load(path).apply(RequestOptions.bitmapTransform(new CircleCrop())).into(imgHeadMain);
         }
     }
+
 
     private void initView() {
         mMapView = (MapView) findViewById(R.id.map);
