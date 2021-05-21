@@ -49,30 +49,30 @@ public class NetTools {
     //创建OKhttp实例
     private OkHttpClient createClient() {
         return new OkHttpClient.Builder()
-                .connectTimeout(10, TimeUnit.SECONDS)
-                .readTimeout(10, TimeUnit.SECONDS)
-                .writeTimeout(10, TimeUnit.SECONDS)
+                .connectTimeout(10, TimeUnit.MINUTES)
+                .readTimeout(10, TimeUnit.MINUTES)
+                .writeTimeout(10, TimeUnit.MINUTES)
                 .addNetworkInterceptor(createNetworkInterceptor())
-                .addInterceptor(createTokenInterceptor())
+                .addInterceptor(createToken())
                 .build();
     }
 
-    // 创建处理Token的自定义拦截器
-//
-    private Interceptor createTokenInterceptor() {
-        Interceptor interceptor = new Interceptor() {
-            @Override
-            public Response intercept(Chain chain) throws IOException {
+    private Interceptor createToken() {
+      Interceptor interceptor=  new Interceptor() {
 
-                    Request request = chain.request();
+          @Override
+          public Response intercept(Chain chain) throws IOException {
+              Request request = chain.request();
+              Request token = request.newBuilder().addHeader("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMjMifQ.xKPoMpjMrGHF2iDgqhXrvyypo8HGEZtqDcnND2tQyPo").build();
+              Response proceed = chain.proceed(token);
 
-                    Request token = request.newBuilder().addHeader("token",ConsValue.TOKEN).build();
-                    Response proceed = chain.proceed(token);
-                    return proceed;
-            }
-        };
-        return interceptor;
+              return proceed;
+          }
+      };
+
+    return interceptor;
     }
+
 
     /**
      * 创建日志拦截器

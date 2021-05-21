@@ -67,14 +67,14 @@ public class LoginActivity extends AppCompatActivity {
         LoginEntity loginEntity = new LoginEntity();
         loginEntity.setPhonenumber(phonenumber);
         loginEntity.setPwd(pwd);
-        if(!phonenumber.isEmpty() && !pwd.isEmpty()){
+        if (!phonenumber.isEmpty() && !pwd.isEmpty()) {
             LoginViewModel loginViewModel = new LoginViewModel(this);
             loginViewModel.logincmd(loginEntity).observe(this, new Observer<BaseRespEntity<LoginFanEntity>>() {
                 @Override
                 public void onChanged(BaseRespEntity<LoginFanEntity> loginEntityBaseRespEntity) {
-                    if(loginEntityBaseRespEntity.getMsg().equals("请求成功")){
+                    if (loginEntityBaseRespEntity.getMsg().equals("请求成功")) {
                         //登录成功
-                        int id = loginEntityBaseRespEntity.getData().getId();
+                        int id = loginEntityBaseRespEntity.getData(LoginFanEntity.class).getId();
 
                         String token = loginEntityBaseRespEntity.getData(LoginFanEntity.class).getToken();
                         SharedPreferences tLapp = getSharedPreferences("TLapp", MODE_PRIVATE);
@@ -86,14 +86,14 @@ public class LoginActivity extends AppCompatActivity {
                         edit.commit();
                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
                         finish();
-                    }else{
+                    } else {
                         loginPwd.getText().clear();
                         Toast.makeText(LoginActivity.this, "输入手机号或密码错误", Toast.LENGTH_SHORT).show();
                     }
                 }
             });
 
-        }else{
+        } else {
 
             Toast.makeText(this, "请输入手机号和密码", Toast.LENGTH_SHORT).show();
             loginPwd.getText().clear();

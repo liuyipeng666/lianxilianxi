@@ -21,8 +21,6 @@
     <uses-permission android:name="android.permission.BROADCAST_PACKAGE_REPLACED" />
     <uses-permission android:name="android.permission.GET_TASKS" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="android.permission.INTERNET" /> <!-- 允许程序打开网络套接字 -->
-    <uses-permission android:name="android.permission.INTERNET" /> <!-- 允许程序设置内置sd卡的写权限 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 允许程序获取网络状态 -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 允许程序访问WiFi网络信息 -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 允许程序读写手机状态和身份 -->
@@ -69,27 +67,27 @@
 
         </activity>
         <activity android:name=".view.AddPersonActivity">
+
+
+        </activity>
+        <activity android:name=".view.ForgetActivity" />
+        <activity android:name=".view.MainActivity" >
+
+        </activity>
+        <activity android:name=".view.LoginActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.ForgetActivity" />
-        <activity android:name=".view.MainActivity">
-
-
+        <activity android:name=".view.RegisterActivity" >
 
         </activity>
-        <activity android:name=".view.LoginActivity">
-
-
-
-        </activity>
-        <activity android:name=".view.RegisterActivity" />
         <activity android:name=".amessage.AMessageActivity" />
         <activity android:name=".SettingActivity" />
-
+        <activity android:name=".view.LianXiRenActivity"></activity>
         <service android:name="com.amap.api.location.APSService" />
 
         <meta-data
