@@ -9,7 +9,7 @@
     tools:context=".view.AddPersonActivity">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="60dp"
         >
         <include
             android:layout_width="match_parent"
@@ -32,9 +32,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="#33999B"
-                app:tabSelectedTextColor="#fff"
-                app:tabIndicatorColor="#FFEB3B"
-                app:tabTextColor="#fff"
+                app:tabSelectedTextColor="@color/white"
+                app:tabIndicatorColor="@color/title_beijing"
+                app:tabTextColor="@color/white"
                 />
         </LinearLayout>
         <LinearLayout

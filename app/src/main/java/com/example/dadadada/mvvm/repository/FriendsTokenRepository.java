@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData;
 import com.example.core.BaseRepository;
 
 import com.example.dadadada.mvvm.model.FriendsTokenModel;
-import com.example.dadadada.mvvm.model.entity.FriendsEntity;
+import com.example.dadadada.entity.entity.FriendsEntity;
 import com.example.net.retrofit.BaseRespEntity;
 
 import java.util.List;

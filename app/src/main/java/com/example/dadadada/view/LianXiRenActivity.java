@@ -1,6 +1,9 @@
 package com.example.dadadada.view;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -15,9 +18,13 @@ import com.example.dadadada.adapter.FriendsTokenAdapter;
 import com.example.dadadada.fragment.FriendsFragment;
 import com.example.dadadada.fragment.GroupChatFragment;
 import com.example.dadadada.fragment.GroupFragment;
+
 import com.example.dadadada.mvvm.model.entity.ConfigDemo;
-import com.example.dadadada.mvvm.model.entity.FriendsEntity;
-import com.example.dadadada.mvvm.model.entity.MyTabs;
+
+
+import com.example.dadadada.entity.entity.FriendsEntity;
+import com.example.dadadada.entity.entity.MyTabs;
+
 import com.example.dadadada.mvvm.viewmodel.FriendsTokenViewModel;
 import com.example.net.retrofit.BaseRespEntity;
 import com.flyco.tablayout.CommonTabLayout;
@@ -37,6 +44,8 @@ public class LianXiRenActivity extends AppCompatActivity {
     private List<Fragment> list = new ArrayList<>();
     private FGAdapter fgAdapter;
     private ArrayList<CustomTabEntity> tabs = new ArrayList<>();
+    private ImageView tiaozhuanlianxi;
+    private ImageView lianxirenFinish;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +54,19 @@ public class LianXiRenActivity extends AppCompatActivity {
 
         initView();
         initData();
+
+        tiaozhuanlianxi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(LianXiRenActivity.this, AddPersonActivity.class));
+            }
+        });
+        lianxirenFinish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 
     private void initData() {
@@ -103,5 +125,7 @@ public class LianXiRenActivity extends AppCompatActivity {
             }
         });
 
+        tiaozhuanlianxi = (ImageView) findViewById(R.id.tiaozhuanlianxi);
+        lianxirenFinish = (ImageView) findViewById(R.id.lianxiren_finish);
     }
 }

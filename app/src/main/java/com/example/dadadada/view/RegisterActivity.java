@@ -12,7 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 
 import com.example.dadadada.R;
-import com.example.dadadada.mvvm.model.entity.RegisterEntity;
+import com.example.dadadada.entity.entity.RegisterEntity;
+import com.example.dadadada.entity.entity.RegisterFanEntity;
 import com.example.dadadada.mvvm.viewmodel.RegisterViewModel;
 import com.example.net.retrofit.BaseRespEntity;
 
@@ -55,12 +56,12 @@ public class RegisterActivity extends AppCompatActivity {
         registerEntity.setPwd(pwd);
         if(!name.isEmpty() && !pwd.isEmpty()){
             RegisterViewModel registerViewModel = new RegisterViewModel(this);
-            registerViewModel.loginCmd(registerEntity).observe(this, new Observer<BaseRespEntity<RegisterEntity>>() {
+            registerViewModel.loginCmd(registerEntity).observe(this, new Observer<BaseRespEntity<RegisterFanEntity>>() {
                 @Override
-                public void onChanged(BaseRespEntity<RegisterEntity> entity) {
+                public void onChanged(BaseRespEntity<RegisterFanEntity> entity) {
                     if (entity != null) {
-                        if (entity.getMsg().equals("操作成功")) {
-                            Toast.makeText(RegisterActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
+                        if (entity.getMsg().equals("请求成功")) {
+                            Toast.makeText(RegisterActivity.this, "注册成功", Toast.LENGTH_SHORT).show();
                             finish();
                         } else {
                             registerPwd.getText().clear();

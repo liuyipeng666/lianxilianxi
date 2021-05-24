@@ -4,7 +4,8 @@ import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.LiveData;
 
 import com.example.core.BaseViewModel;
-import com.example.dadadada.mvvm.model.entity.RegisterEntity;
+import com.example.dadadada.entity.entity.RegisterEntity;
+import com.example.dadadada.entity.entity.RegisterFanEntity;
 import com.example.dadadada.mvvm.repository.RegisterRepository;
 import com.example.net.retrofit.BaseRespEntity;
 
@@ -29,7 +30,7 @@ public class RegisterViewModel extends BaseViewModel<RegisterRepository> {
 
     }
 
-    public LiveData<BaseRespEntity<RegisterEntity>> loginCmd(RegisterEntity userEntity) {
+    public LiveData<BaseRespEntity<RegisterFanEntity>> loginCmd(RegisterEntity userEntity) {
         return mRepository.register(userEntity);
     }
 }

@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData;
 
 import com.example.core.IModel;
 import com.example.dadadada.api.UserApi;
-import com.example.dadadada.mvvm.model.entity.LoginEntity;
-import com.example.dadadada.mvvm.model.entity.LoginFanEntity;
+import com.example.dadadada.entity.entity.LoginEntity;
+import com.example.dadadada.entity.entity.LoginFanEntity;
 import com.example.net.retrofit.BaseRespEntity;
 import com.example.net.retrofit.NetTools;
 

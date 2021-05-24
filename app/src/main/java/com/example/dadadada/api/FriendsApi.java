@@ -3,8 +3,8 @@ package com.example.dadadada.api;
 
 import androidx.lifecycle.LiveData;
 
+import com.example.dadadada.entity.entity.FriendsEntity;
 import com.example.dadadada.mvvm.model.entity.FriendListEntity;
-import com.example.dadadada.mvvm.model.entity.FriendsEntity;
 import com.example.net.retrofit.BaseRespEntity;
 
 import java.util.List;

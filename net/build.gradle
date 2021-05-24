@@ -2,6 +2,7 @@ plugins {
     id 'com.android.library'
 }
 
+def urls=rootProject.ext.urls
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
@@ -20,7 +21,11 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField("String","SERVICE_URL","\""+urls.online+"\"")
+        }
 
+        debug{
+            buildConfigField("String","SERVICE_URL","\""+urls.offline+"\"")
         }
 
     }
@@ -34,6 +39,7 @@ dependencies {
 
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'com.google.android.material:material:1.1.0'
+    implementation project(path: ':Common')
     testImplementation 'junit:junit:4.+'
     //RxJava依赖
     implementation 'io.reactivex.rxjava2:rxjava:2.2.6'

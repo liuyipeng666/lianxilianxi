@@ -44,12 +44,14 @@ public class AddPersonActivity extends AppCompatActivity {
         });
 
 
+
     }
 
     @Override
     protected void onStart() {
         super.onStart();
         Log.i("123", "onStart: ");
+
         tab();
     }
 

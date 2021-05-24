@@ -4,8 +4,8 @@ import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.LiveData;
 
 import com.example.core.BaseViewModel;
-import com.example.dadadada.mvvm.model.entity.LoginEntity;
-import com.example.dadadada.mvvm.model.entity.LoginFanEntity;
+import com.example.dadadada.entity.entity.LoginEntity;
+import com.example.dadadada.entity.entity.LoginFanEntity;
 import com.example.dadadada.mvvm.repository.LoginRepository;
 import com.example.net.retrofit.BaseRespEntity;
 
