@@ -77,7 +77,8 @@ public class LoginActivity extends AppCompatActivity {
                         edit.putString("pass",pwd);
                         edit.commit();
                         //登录成功
-                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        startActivity(intent);
                         finish();
                     }else{
                         loginPwd.getText().clear();

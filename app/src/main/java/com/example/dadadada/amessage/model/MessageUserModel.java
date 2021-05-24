@@ -11,6 +11,6 @@ import com.example.net.retrofit.NetTools;
 public class MessageUserModel implements IModel {
     public LiveData<BaseRespEntity<MessageUserEntity>> getUser(){
         AMessageApi.MessageUserApi api = NetTools.getInstance().create(AMessageApi.MessageUserApi.class);
-        return api.get();
+        return api.get(888,1,1,888);
     }
 }

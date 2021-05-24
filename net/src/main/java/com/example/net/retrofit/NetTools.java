@@ -50,9 +50,9 @@ public class NetTools {
     //创建OKhttp实例
     private OkHttpClient createClient() {
         return new OkHttpClient.Builder()
-                .connectTimeout(10, TimeUnit.SECONDS)
-                .readTimeout(10, TimeUnit.SECONDS)
-                .writeTimeout(10, TimeUnit.SECONDS)
+                .connectTimeout(10, TimeUnit.MINUTES)
+                .readTimeout(10, TimeUnit.MINUTES)
+                .writeTimeout(10, TimeUnit.MINUTES)
                 .addNetworkInterceptor(createNetworkInterceptor())
                 .addInterceptor(createTokenInterceptor())
                 .build();
@@ -65,19 +65,9 @@ public class NetTools {
             @Override
             public Response intercept(Chain chain) throws IOException {
                 Request request = chain.request();
-                Response response = chain.proceed(request);
-                //todo 缓存Token 添加到请求头 待实现...
-                //如果是401 同步请求Token然后加载到新请求的Header里，重新发起业务请求
-                if (checkHttpCode401(response)) {
-                    String token = requestToken();
-                    if (TextUtils.isEmpty(token)) {
-                        throw new RuntimeException("Token is null...");
-                    }
-                    Request.Builder newBuilder = request.newBuilder().addHeader("Authorization", "bearer " + token);
-                    Request newRequest = newBuilder.build();
-                    return chain.proceed(newRequest);
-                }
-                return response;
+                Request token = request.newBuilder().addHeader("token","eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMjMifQ.xKPoMpjMrGHF2iDgqhXrvyypo8HGEZtqDcnND2tQyPo").build();
+                Response proceed = chain.proceed(token);
+                return proceed;
             }
         };
         return interceptor;
@@ -124,7 +114,7 @@ public class NetTools {
     private Interceptor createNetworkInterceptor() {
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-        Log.i("www", "createNetworkInterceptor: +dadad");
+        Log.i("www", "createNetworkInterceptor: +maixilele");
         return interceptor;
     }
 

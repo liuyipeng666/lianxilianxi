@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">dadadada</string>
+    <string name="et_num">输入对方手机号</string>
+    <string name="number">发送消息</string>
 </resources>

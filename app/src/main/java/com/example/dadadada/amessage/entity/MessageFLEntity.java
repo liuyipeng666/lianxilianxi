@@ -1,15 +1,25 @@
 package com.example.dadadada.amessage.entity;
 
-import com.example.core.IModel;
-
 import java.util.List;
 
 public class MessageFLEntity {
+
+
+    /**
+     * code : 0
+     * data : [{"id":0,"msgtypecode":0,"msgtypename":""}]
+     * msg :
+     */
+
     private int code;
+    private String msg;
+    /**
+     * id : 0
+     * msgtypecode : 0
+     * msgtypename :
+     */
 
     private List<DataBean> data;
-
-    private String msg;
 
     public int getCode() {
         return code;
@@ -17,14 +27,6 @@ public class MessageFLEntity {
 
     public void setCode(int code) {
         this.code = code;
-    }
-
-    public List<DataBean> getData() {
-        return data;
-    }
-
-    public void setData(List<DataBean> data) {
-        this.data = data;
     }
 
     public String getMsg() {
@@ -35,7 +37,15 @@ public class MessageFLEntity {
         this.msg = msg;
     }
 
-    public class DataBean {
+    public List<DataBean> getData() {
+        return data;
+    }
+
+    public void setData(List<DataBean> data) {
+        this.data = data;
+    }
+
+    public static class DataBean {
         private int id;
         private int msgtypecode;
         private String msgtypename;
@@ -64,6 +74,4 @@ public class MessageFLEntity {
             this.msgtypename = msgtypename;
         }
     }
-
-
 }

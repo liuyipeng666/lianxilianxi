@@ -15,6 +15,7 @@ import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Query;
 
 public interface AMessageApi {
 
@@ -31,7 +32,7 @@ public interface AMessageApi {
      */
     interface MessageUserApi{
         @GET("/msg/findMsgsByUser")
-        LiveData<BaseRespEntity<MessageUserEntity>> get();
+        LiveData<BaseRespEntity<MessageUserEntity>> get(@Query("friendid")Integer friendid,@Query("page")Integer page,@Query("pagesize")Integer pagesize,@Query("userid")Integer userid);
     }
 
     /**
