@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData;
 import com.example.core.BaseRepository;
 import com.example.dadadada.mvvm.model.LoginModel;
 import com.example.dadadada.mvvm.model.entity.LoginEntity;
+import com.example.dadadada.mvvm.model.entity.LoginFanEntity;
 import com.example.net.retrofit.BaseRespEntity;
 
 public class LoginRepository extends BaseRepository<LoginModel> {
@@ -14,7 +15,7 @@ public class LoginRepository extends BaseRepository<LoginModel> {
         return new LoginModel();
     }
 
-    public LiveData<BaseRespEntity<LoginEntity>> login(LoginEntity entity){
+    public LiveData<BaseRespEntity<LoginFanEntity>> login(LoginEntity entity){
         return mModel.login(entity);
     }
 }

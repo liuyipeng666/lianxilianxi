@@ -85,7 +85,48 @@
                 android:divider="@null"
                 android:dividerHeight="0dp" />
         </LinearLayout>
+        <com.example.dadadada.view.CustomView
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="550dp"
+            android:layout_marginRight="60dp"
+            android:background="@drawable/shape_background"
+            app:xSpace="20"
+            app:ySpace="10">
 
+            <ImageView
+                android:id="@+id/iv_person"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/img_background"
+                android:src="@drawable/ic_person" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/img_background"
+                android:src="@drawable/ic_shoucang" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/img_background"
+                android:src="@drawable/ic_message" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/img_background"
+                android:src="@drawable/ic_camera" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/img_background"
+                android:src="@drawable/ic_friendshape" />
+
+        </com.example.dadadada.view.CustomView>
     </RelativeLayout>
 
     <LinearLayout
@@ -179,7 +220,7 @@
                     android:paddingLeft="30dp"></TextView>
 
             </LinearLayout>
-            二组组员曹蓝之 17610665019 19:54:29
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -275,7 +316,7 @@
 
             </LinearLayout>
 
-            二组组员曹蓝之 17610665019 19:54:38
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"

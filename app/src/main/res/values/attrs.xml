@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CustomView">
+        <attr name="xSpace" format="integer" />
+        <attr name="ySpace" format="integer" />
+    </declare-styleable>
+</resources>

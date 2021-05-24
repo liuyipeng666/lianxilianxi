@@ -1,7 +1,8 @@
 package com.example.net.retrofit;
 
-import android.text.TextUtils;
 import android.util.Log;
+
+import com.example.net.BuildConfig;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -11,14 +12,12 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
-import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class NetTools {
     private Retrofit mRetrofit;
-
     private NetTools() {
         createRetorfit();
     }
@@ -43,7 +42,7 @@ public class NetTools {
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addCallAdapterFactory(LiveDataCallAdapterFactory.create())
-                .baseUrl("http://121.4.241.78:8080/")
+                .baseUrl(BuildConfig.SERVICE_URL)
                 .build();
     }
 
@@ -54,12 +53,12 @@ public class NetTools {
                 .readTimeout(10, TimeUnit.MINUTES)
                 .writeTimeout(10, TimeUnit.MINUTES)
                 .addNetworkInterceptor(createNetworkInterceptor())
-                .addInterceptor(createTokenInterceptor())
+                .addInterceptor(createToken())
                 .build();
     }
 
+
     // 创建处理Token的自定义拦截器
-//
     private Interceptor createTokenInterceptor() {
         Interceptor interceptor = new Interceptor() {
             @Override
@@ -73,7 +72,6 @@ public class NetTools {
         return interceptor;
     }
     //判断 Code 是否为401
-
     private boolean checkHttpCode401(Response response) {
         if (null == response) {
             return false;
@@ -84,25 +82,20 @@ public class NetTools {
             return false;
         }
     }
+    private Interceptor createToken() {
+      Interceptor interceptor=  new Interceptor() {
 
-    /**
-     * 获取Token的同步网络请求
-     *
-     * @return
-     */
-    private String requestToken() {
+          @Override
+          public Response intercept(Chain chain) throws IOException {
+              Request request = chain.request();
+              Request token = request.newBuilder().addHeader("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMjMifQ.xKPoMpjMrGHF2iDgqhXrvyypo8HGEZtqDcnND2tQyPo").build();
+              Response proceed = chain.proceed(token);
 
+              return proceed;
+          }
+      };
 
-        TokenApi tokenApi = create(TokenApi.class);
-        Call<TokenRespEntity> tokenService = tokenApi.getToken("password", ConsValue.AUTHCODE, "");
-        try {
-            retrofit2.Response<TokenRespEntity> result = tokenService.execute();
-            if (result != null && result.body() != null) {
-                return result.body().getAccess_token();
-            }
-        } catch (IOException e) {
-        }
-        return "";
+    return interceptor;
     }
 
 

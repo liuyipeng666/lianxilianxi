@@ -1,4 +1,4 @@
-package com.example.dadadada;
+package com.example.dadadada.view;
 
 
 import android.annotation.SuppressLint;
@@ -36,14 +36,15 @@ import com.amap.api.maps.model.MyLocationStyle;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.dadadada.R;
+import com.example.dadadada.Trace;
 import com.example.dadadada.adapter.TraceListAdapter;
-import com.example.dadadada.view.LoginActivity;
-import com.example.dadadada.view.SettingActivity;
+
+import com.example.dadadada.common.SpUtils;
 import com.umeng.socialize.ShareAction;
 import com.umeng.socialize.UMShareAPI;
 import com.umeng.socialize.UMShareListener;
 import com.umeng.socialize.bean.SHARE_MEDIA;
-
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -52,7 +53,7 @@ import java.util.Date;
 import java.util.List;
 
 
-public class MainActivity extends AppCompatActivity implements AMapLocationListener,UMShareListener{
+public class MainActivity extends AppCompatActivity implements AMapLocationListener, UMShareListener {
 
     private ListView lv;
     private List<Trace> traceList = new ArrayList<>(10);
@@ -75,14 +76,15 @@ public class MainActivity extends AppCompatActivity implements AMapLocationListe
     MapView mMapView = null;
     //初始化地图控制器对象
     AMap aMap;
-    private String path="";
+    private String path = "";
+    private ImageView ivPerson;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //动态权限
-        if(Build.VERSION.SDK_INT>Build.VERSION_CODES.M){
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
             requestPermissions(new String[]{
                     "android.permission.ACCESS_COARSE_LOCATION",
                     "android.permission.ACCESS_FINE_LOCATION",
@@ -95,8 +97,11 @@ public class MainActivity extends AppCompatActivity implements AMapLocationListe
                     "android.permission.READ_EXTERNAL_STORAGE",
                     "android.permission.WRITE_EXTERNAL_STORAGE",
                     "android.permission.CAMERA",
+                    "android.permission.CALL_PHONE",
+                    "android.permission.READ_CONTACTS",
+                    "android.permission.WRITE_CONTACTS",
                     "android.permission.CALL_PHONE"
-            },100);
+            }, 100);
         }
         initView();
         initData();
@@ -115,6 +120,33 @@ public class MainActivity extends AppCompatActivity implements AMapLocationListe
         if (aMap == null) {
             aMap = mMapView.getMap();
         }
+
+        mapinit(true);
+        imgHeadMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String username = SpUtils.name(MainActivity.this);
+                if(username==null){
+                    startActivity(new Intent(MainActivity.this,LoginActivity.class));
+                }else{
+                    Toast.makeText(MainActivity.this, "登录了", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+
+
+
+
+
+        ivPerson.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,LianXiRenActivity.class);
+                startActivity(intent);
+
+            }
+        });
     }
 
     @Override
@@ -125,7 +157,7 @@ public class MainActivity extends AppCompatActivity implements AMapLocationListe
                 amapLocation.getLocationType();//获取当前定位结果来源，如网络定位结果，详见定位类型表
                 double latitude = amapLocation.getLatitude();//获取纬度
                 double longitude = amapLocation.getLongitude();//获取经度
-                Log.d("123", "获取经度:"+longitude + "获取纬度" + latitude);
+                //  Log.d("123", "获取经度:"+longitude + "获取纬度" + latitude);
                 amapLocation.getAccuracy();//获取精度信息
                 SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 Date date = new Date(amapLocation.getTime());
@@ -191,10 +223,10 @@ public class MainActivity extends AppCompatActivity implements AMapLocationListe
             public void onClick(View v) {
                 Intent intent = new Intent();
                 intent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
-                path="sdcard/DCIM/Camera/"+createName();
+                path = "sdcard/DCIM/Camera/" + createName();
                 Uri uriForFile = FileProvider.getUriForFile(MainActivity.this, "com.example.dadadada", new File(path));
-                intent.putExtra(MediaStore.EXTRA_OUTPUT,uriForFile);
-                startActivityForResult(intent,200);
+                intent.putExtra(MediaStore.EXTRA_OUTPUT, uriForFile);
+                startActivityForResult(intent, 200);
             }
         });
 
@@ -204,7 +236,7 @@ public class MainActivity extends AppCompatActivity implements AMapLocationListe
             public void onClick(View v) {
                 new ShareAction(MainActivity.this)
                         .withText("分享成功")
-                        .setDisplayList(SHARE_MEDIA.SINA,SHARE_MEDIA.QQ,SHARE_MEDIA.WEIXIN,SHARE_MEDIA.QZONE)
+                        .setDisplayList(SHARE_MEDIA.SINA, SHARE_MEDIA.QQ, SHARE_MEDIA.WEIXIN, SHARE_MEDIA.QZONE)
                         .setCallback(MainActivity.this)
                         .open();
             }
@@ -245,6 +277,12 @@ public class MainActivity extends AppCompatActivity implements AMapLocationListe
                 mapinit(isChecked);
             }
         });
+
+        String username = SpUtils.name(MainActivity.this);
+        if(username!=null){
+            drawerUsername.setText(""+username);
+        }
+
     }
 
     @SuppressLint("SimpleDateFormat")
@@ -252,18 +290,19 @@ public class MainActivity extends AppCompatActivity implements AMapLocationListe
         Date date = new Date();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
         String format = simpleDateFormat.format(date);
-        return "IMG"+format+".jpg";
+        return "IMG" + format + ".jpg";
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        UMShareAPI.get(MainActivity.this).onActivityResult(requestCode,resultCode,data);
-        if (requestCode == 200 && resultCode== Activity.RESULT_OK){
+        UMShareAPI.get(MainActivity.this).onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 200 && resultCode == Activity.RESULT_OK) {
             Glide.with(MainActivity.this).load(path).apply(RequestOptions.bitmapTransform(new CircleCrop())).into(drawerHeadimg);
             Glide.with(MainActivity.this).load(path).apply(RequestOptions.bitmapTransform(new CircleCrop())).into(imgHeadMain);
         }
     }
+
 
     private void initView() {
         mMapView = (MapView) findViewById(R.id.map);
@@ -278,6 +317,7 @@ public class MainActivity extends AppCompatActivity implements AMapLocationListe
         drawerUsername = (TextView) findViewById(R.id.drawer_username);
         drawerIntroduce = (TextView) findViewById(R.id.drawer_introduce);
         imgHeadMain = (ImageView) findViewById(R.id.img_head_main);
+        ivPerson = (ImageView) findViewById(R.id.iv_person);
     }
 
 

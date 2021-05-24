@@ -13,9 +13,7 @@
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" /> <!-- 用于读取手机当前的状态 -->
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" /> <!-- 如果您的应用需要后台定位权限，且有可能运行在Android Q设备上,并且设置了target>28，必须增加这个权限声明 -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
-
-    <!-- 以下为需要的基本权限，需要自行添加至您的AndroidManifest文件中 start -->
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" /> <!-- 以下为需要的基本权限，需要自行添加至您的AndroidManifest文件中 start -->
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.BROADCAST_PACKAGE_ADDED" />
     <uses-permission android:name="android.permission.BROADCAST_PACKAGE_CHANGED" />
@@ -23,14 +21,11 @@
     <uses-permission android:name="android.permission.BROADCAST_PACKAGE_REPLACED" />
     <uses-permission android:name="android.permission.GET_TASKS" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="android.permission.INTERNET" /> <!-- 允许程序打开网络套接字 -->
-    <uses-permission android:name="android.permission.INTERNET" /> <!-- 允许程序设置内置sd卡的写权限 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 允许程序获取网络状态 -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 允许程序访问WiFi网络信息 -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 允许程序读写手机状态和身份 -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" /> <!-- 允许程序访问CellID或WiFi热点来获取粗略的位置 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- 用于进行网络定位 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- 用于访问GPS定位 -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- 用于获取运营商信息，用于支持提供运营商信息相关的接口 -->
@@ -42,15 +37,23 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 用于申请调用A-GPS模块 -->
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" /> <!-- 如果设置了target >= 28 如果需要启动后台定位则必须声明这个权限 -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" /> <!-- 如果您的应用需要后台定位权限，且有可能运行在Android Q设备上,并且设置了target>28，必须增加这个权限声明 -->
-    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
-
-    <!-- 相机 -->
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
-    <uses-permission android:name="android.permission.CAMERA"></uses-permission>
-    <uses-permission android:name="android.permission.CALL_PHONE"></uses-permission>
-
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" /> <!-- 相机 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.WRITE_CONTACTS"></uses-permission>
+    <uses-permission android:name="android.permission.READ_CONTACTS"></uses-permission>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
+
         android:name=".app.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -61,15 +64,24 @@
         <activity android:name=".view.ForgetActivity">
 
         </activity>
-        <activity android:name=".MainActivity">
 
-        </activity>
         <activity android:name=".view.LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".view.ContactActivity">
+
 
 
 
         </activity>
+        <activity android:name=".view.AddPersonActivity">
 
+        </activity>
 
         <activity android:name=".view.RegisterActivity">
 
@@ -78,11 +90,7 @@
 
         <activity android:name=".amessage.AMessageActivity">
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
         </activity>
 
@@ -91,18 +99,22 @@
         <activity android:name=".view.SettingActivity"></activity>
 
 
+        <activity android:name=".view.MainActivity" >
 
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".view.LianXiRenActivity"></activity>
         <service android:name="com.amap.api.location.APSService" />
-
 
         <meta-data
             android:name="com.amap.api.v2.apikey"
-            android:value="d689a0b8bbf402ad83c13c319b25ac93"></meta-data>
-
-
-
-
-        <!-- 以下为基本配置信息，需要自行添加至您的AndroidManifest文件中 start -->
+            android:value="d689a0b8bbf402ad83c13c319b25ac93" /> <!-- 以下为基本配置信息，需要自行添加至您的AndroidManifest文件中 start -->
         <service
             android:name="com.taobao.accs.ChannelService"
             android:exported="true"
@@ -239,18 +251,15 @@
             android:authorities="${applicationId}.umeng.message"
             android:exported="false">
             <grant-uri-permission android:pathPattern=".*" />
-        </provider>
-
-
-        <!--照相机-->
+        </provider> <!-- 照相机 -->
         <provider
-            android:authorities="com.example.dadadada"
             android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.dadadada"
             android:grantUriPermissions="true">
-            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/paths"></meta-data>
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/paths" />
         </provider>
-
     </application>
-
 
 </manifest>
