@@ -1,5 +1,6 @@
 package com.example.dadadada.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.example.dadadada.R;
 import com.example.dadadada.adapter.AddPersonAdapter;
+import com.example.dadadada.view.CQunActivity;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
@@ -72,10 +74,11 @@ public class AddGroupFragment extends Fragment {
     }
 
     private void saoma() {
+
     }
 
     private void cjqun() {
-
+        startActivity(new Intent(getContext(), CQunActivity.class));
 
     }
 }

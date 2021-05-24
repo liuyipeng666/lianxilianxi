@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -35,8 +36,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.dadadada.R;
-import com.example.dadadada.SettingActivity;
-import com.example.dadadada.Trace;
+import com.example.dadadada.common.Trace;
 import com.example.dadadada.adapter.TraceListAdapter;
 import com.example.dadadada.common.SpUtils;
 import com.umeng.socialize.ShareAction;
@@ -76,6 +76,12 @@ public class MainActivity extends AppCompatActivity implements AMapLocationListe
     AMap aMap;
     private String path = "";
     private ImageView ivPerson;
+    private MapView map;
+    private LinearLayout cebianKuang;
+    private TextView drawerImgs;
+    private TextView drawerCirculation;
+    private TextView drawerLocation;
+    private Switch drawerRemindSwitch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,23 +120,22 @@ public class MainActivity extends AppCompatActivity implements AMapLocationListe
             @Override
             public void onClick(View view) {
                 String username = SpUtils.name(MainActivity.this);
-                if(username==null){
-                    startActivity(new Intent(MainActivity.this,LoginActivity.class));
-                }else{
+                if (username == null) {
+                    startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                } else {
                     Toast.makeText(MainActivity.this, "登录了", Toast.LENGTH_SHORT).show();
+                    //弹出侧边框
+                    drawerLayoutMain.openDrawer(cebianKuang);
                 }
 
             }
         });
 
 
-
-
-
         ivPerson.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,LianXiRenActivity.class);
+                Intent intent = new Intent(MainActivity.this, LianXiRenActivity.class);
                 startActivity(intent);
 
             }
@@ -237,9 +242,17 @@ public class MainActivity extends AppCompatActivity implements AMapLocationListe
                 startActivity(intent);
             }
         });
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
         String username = SpUtils.name(MainActivity.this);
-        if(username!=null){
-            drawerUsername.setText(""+username);
+        if (username != null) {
+            drawerUsername.setText("" + username);
+        }else{
+            drawerUsername.setText("未登录");
         }
 
     }
@@ -277,6 +290,12 @@ public class MainActivity extends AppCompatActivity implements AMapLocationListe
         drawerIntroduce = (TextView) findViewById(R.id.drawer_introduce);
         imgHeadMain = (ImageView) findViewById(R.id.img_head_main);
         ivPerson = (ImageView) findViewById(R.id.iv_person);
+        map = (MapView) findViewById(R.id.map);
+        cebianKuang = (LinearLayout) findViewById(R.id.cebian_kuang);
+        drawerImgs = (TextView) findViewById(R.id.drawer_imgs);
+        drawerCirculation = (TextView) findViewById(R.id.drawer_circulation);
+        drawerLocation = (TextView) findViewById(R.id.drawer_location);
+        drawerRemindSwitch = (Switch) findViewById(R.id.drawer_remind_switch);
     }
 
 

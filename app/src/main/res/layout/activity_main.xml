@@ -130,6 +130,7 @@
     </RelativeLayout>
 
     <LinearLayout
+        android:id="@+id/cebian_kuang"
         android:layout_width="300dp"
         android:layout_height="match_parent"
         android:layout_gravity="left"
@@ -197,6 +198,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
+
             android:background="#C6FFFFFF">
 
             <LinearLayout

@@ -14,8 +14,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 
 import com.example.dadadada.R;
-import com.example.dadadada.mvvm.model.entity.LoginEntity;
-import com.example.dadadada.mvvm.model.entity.LoginFanEntity;
+import com.example.dadadada.entity.entity.LoginEntity;
+import com.example.dadadada.entity.entity.LoginFanEntity;
 import com.example.dadadada.mvvm.viewmodel.LoginViewModel;
 import com.example.net.retrofit.BaseRespEntity;
 

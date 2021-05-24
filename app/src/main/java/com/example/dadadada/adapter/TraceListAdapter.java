@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 
 import com.example.dadadada.R;
-import com.example.dadadada.Trace;
+import com.example.dadadada.common.Trace;
 
 import java.util.ArrayList;
 import java.util.List;
