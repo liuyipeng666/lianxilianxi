@@ -60,6 +60,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+
         android:theme="@style/Theme.Design.NoActionBar">
         <activity android:name=".view.ForgetActivity">
 
@@ -99,17 +100,20 @@
         <activity android:name=".view.SettingActivity"></activity>
 
 
-        <activity android:name=".view.MainActivity" >
+        <activity android:name=".view.MainActivity" ></activity>
 
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
+        <activity android:name=".view.MyAcitivityActivity">
+
+
+
         </activity>
 
+
         <activity android:name=".view.LianXiRenActivity"></activity>
+
         <service android:name="com.amap.api.location.APSService" />
 
         <meta-data

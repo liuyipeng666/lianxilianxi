@@ -3,8 +3,8 @@
 
     <string name="et_num">输入对方手机号</string>
     <string name="number">发送消息</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="addFriend">添加好友</string>
+
 
 </resources>

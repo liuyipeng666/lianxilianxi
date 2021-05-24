@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -39,7 +40,8 @@ public class AMessageActivity extends BaseActivity {
     private EditText mainNumber;
     private ReceiveMsgEntity receive = new ReceiveMsgEntity();
     private String SendMsg;
-    private int UNumber;
+    private Button addFriendBt;
+    private int UNumber = 0;
 
 
     @Override
@@ -62,14 +64,15 @@ public class AMessageActivity extends BaseActivity {
     private void initData() {
         //发送消息内容
         SendMsg = etSendMsg.getText().toString();
-        //对方电话号码
-        UNumber = Integer.parseInt(mainNumber.getText().toString());
+
+
     }
 
     private void initView() {
         etSendMsg = findViewById(R.id.et_sendMsg);
         MsgUserRv = findViewById(R.id.MsgUser_rv);
         mainNumber = findViewById(R.id.main_number);
+        addFriendBt = findViewById(R.id.addFriend_bt);
     }
 
     private void Receive() {
@@ -107,15 +110,16 @@ public class AMessageActivity extends BaseActivity {
                     showMsg("毫无训练痕迹");
                 }else{
                     MessageFLEntity data = messageFLEntityBaseRespEntity.getData();
-
                 }
-
             }
         });
     }
 
     //接收消息
     public void sendMsg(View view) {
+        //对方电话号码
+        UNumber = Integer.parseInt(mainNumber.getText().toString());
+
         SendMessageViewModel sendMessageViewModel = new SendMessageViewModel(this);
         sendMessageViewModel.getSend(receive).observe(this, new Observer<BaseRespEntity<SendMessageEntity>>() {
             @Override

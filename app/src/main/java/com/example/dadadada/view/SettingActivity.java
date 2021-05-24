@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.dadadada.R;
 
-
 public class SettingActivity extends AppCompatActivity {
 
     @Override
