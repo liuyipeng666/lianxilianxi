@@ -1,8 +1,10 @@
-package com.example.dadadada;
+package com.example.dadadada.view;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.dadadada.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

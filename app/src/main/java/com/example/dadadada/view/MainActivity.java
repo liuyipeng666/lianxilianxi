@@ -35,9 +35,8 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.dadadada.R;
-import com.example.dadadada.SettingActivity;
-import com.example.dadadada.Trace;
 import com.example.dadadada.adapter.TraceListAdapter;
+import com.example.dadadada.mvvm.model.entity.Trace;
 import com.umeng.socialize.ShareAction;
 import com.umeng.socialize.UMShareAPI;
 import com.umeng.socialize.UMShareListener;
@@ -75,6 +74,7 @@ public class MainActivity extends AppCompatActivity implements AMapLocationListe
     AMap aMap;
     private String path = "";
     private ImageView ivPerson;
+    private BottomBarView bottom;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,14 +107,14 @@ public class MainActivity extends AppCompatActivity implements AMapLocationListe
         }
         mapinit();
 
-        ivPerson.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,LianXiRenActivity.class);
-                startActivity(intent);
-
-            }
-        });
+//        ivPerson.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(MainActivity.this,LianXiRenActivity.class);
+//                startActivity(intent);
+//
+//            }
+//        });
     }
 
     @Override
@@ -217,6 +217,28 @@ public class MainActivity extends AppCompatActivity implements AMapLocationListe
                 startActivity(intent);
             }
         });
+        bottom.setmOnBottomBarClickListener(new BottomBarView.OnBottomBarClickListener() {
+            @Override
+            public void onCLick(int position) {
+                switch (position) {
+                    case 1:
+                        startActivity(new Intent(MainActivity.this, MyAcitivityActivity.class));
+                        break;
+                    case 2:
+                        startActivity(new Intent(MainActivity.this, LianXiRenActivity.class));
+                        break;
+                    case 3:
+                        Toast.makeText(MainActivity.this, "信息", Toast.LENGTH_SHORT).show();
+                        break;
+                    case 4:
+                        Toast.makeText(MainActivity.this, "朋友圈", Toast.LENGTH_SHORT).show();
+                        break;
+                    case 5:
+                        Toast.makeText(MainActivity.this, "照相机", Toast.LENGTH_SHORT).show();
+                        break;
+                }
+            }
+        });
     }
 
     @SuppressLint("SimpleDateFormat")
@@ -250,7 +272,7 @@ public class MainActivity extends AppCompatActivity implements AMapLocationListe
         drawerUsername = (TextView) findViewById(R.id.drawer_username);
         drawerIntroduce = (TextView) findViewById(R.id.drawer_introduce);
         imgHeadMain = (ImageView) findViewById(R.id.img_head_main);
-        ivPerson = (ImageView) findViewById(R.id.iv_person);
+        bottom = (BottomBarView) findViewById(R.id.bottom);
     }
 
 
@@ -301,4 +323,5 @@ public class MainActivity extends AppCompatActivity implements AMapLocationListe
     public void onCancel(SHARE_MEDIA share_media) {
         Toast.makeText(this, "你取消了分享", Toast.LENGTH_SHORT).show();
     }
+
 }
