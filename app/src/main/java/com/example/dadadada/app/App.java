@@ -23,6 +23,7 @@ public class App extends Application {
                 .build();
 
         ZLogManager.getInstance().init(zlog);
+
         MultiDex.install(App.this);
 
         UMConfigure.init(this,"5a12384aa40fa3551f0001d1","umeng",UMConfigure.DEVICE_TYPE_PHONE,"");
