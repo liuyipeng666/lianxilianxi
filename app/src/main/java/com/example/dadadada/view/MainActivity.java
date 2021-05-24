@@ -236,6 +236,7 @@ public class MainActivity extends AppCompatActivity implements AMapLocationListe
                     case 5:
                         Toast.makeText(MainActivity.this, "照相机", Toast.LENGTH_SHORT).show();
                         break;
+
                 }
             }
         });
