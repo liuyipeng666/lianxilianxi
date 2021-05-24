@@ -75,10 +75,18 @@
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
         </activity>
-        <activity android:name=".view.LoginActivity" />
-        <activity android:name=".view.RegisterActivity">
+
+        <activity android:name=".view.MyAcitivityActivity">
 
         </activity>
+        <activity android:name=".view.LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".view.RegisterActivity"></activity>
         <activity android:name=".amessage.AMessageActivity" />
         <activity android:name=".view.SettingActivity" />
         <activity android:name=".view.LianXiRenActivity" />

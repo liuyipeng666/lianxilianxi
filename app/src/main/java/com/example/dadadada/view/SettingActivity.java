@@ -1,14 +1,11 @@
 package com.example.dadadada.view;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.dadadada.R;
-import com.example.dadadada.common.SpUtils;
 
 public class SettingActivity extends AppCompatActivity {
 
@@ -21,14 +18,8 @@ public class SettingActivity extends AppCompatActivity {
 
         initView();
 
-        tuichuLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                SpUtils.clearr(SettingActivity.this);
-                startActivity(new Intent(SettingActivity.this, MainActivity.class));
-                finish();
-            }
-        });
+
+
     }
 
     private void initView() {

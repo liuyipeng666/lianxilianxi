@@ -34,4 +34,5 @@ public class FriendsTokenViewModel extends BaseViewModel<FriendsTokenRepository>
     public LiveData<BaseRespEntity<List<FriendsEntity>>> getFriendsToken(int userId) {
         return mRepository.get(userId);
     }
+
 }

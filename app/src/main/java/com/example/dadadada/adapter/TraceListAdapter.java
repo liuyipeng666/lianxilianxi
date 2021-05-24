@@ -18,8 +18,8 @@ import java.util.List;
 public class TraceListAdapter extends BaseAdapter {
     private Context context;
     private List<Trace> traceList = new ArrayList<>(1);
-    private static final int TYPE_TOP = 0x0000;
-    private static final int TYPE_NORMAL= 0x0001;
+    private static final int TYPE_TOP = 0;
+    private static final int TYPE_NORMAL= 1;
 
     public TraceListAdapter(Context context, List<Trace> traceList) {
         this.context = context;
@@ -58,9 +58,7 @@ public class TraceListAdapter extends BaseAdapter {
         }
 
         if (getItemViewType(position) == TYPE_TOP) {
-            // 第一行头的竖线不显示
             holder.tvTopLine.setVisibility(View.INVISIBLE);
-            // 字体颜色加深
             holder.tvAcceptTime.setTextColor(0xff555555);
             holder.tvAcceptStation.setTextColor(0xff555555);
 
