@@ -1,4 +1,6 @@
-package com.example.dadadada;
+
+package com.example.dadadada.common;
+
 
 public class Trace {
     /**

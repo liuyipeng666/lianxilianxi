@@ -1,4 +1,4 @@
-package com.example.dadadada.mvvm.model.entity;
+package com.example.dadadada.entity;
 
 import com.flyco.tablayout.listener.CustomTabEntity;
 

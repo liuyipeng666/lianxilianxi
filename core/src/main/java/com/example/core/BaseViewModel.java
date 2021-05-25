@@ -17,7 +17,7 @@ public abstract class BaseViewModel<Repo extends BaseRepository> extends ViewMod
 
     protected abstract Repo createRepository();
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
+    @OnLifecycleEvent(Lifecycle.Event.ON_START)
     public void connView(){
         connectionView();
     }

@@ -3,11 +3,14 @@ package com.example.dadadada.api;
 import androidx.lifecycle.LiveData;
 
 import com.example.dadadada.mvvm.model.entity.ChangeUserEntity;
+import com.example.dadadada.mvvm.model.entity.RegisterCodeEntity;
+import com.example.dadadada.mvvm.model.entity.UserEntity;
+import com.example.dadadada.entity.CreateQunEntity;
+import com.example.dadadada.entity.CreateQunFanEntity;
 import com.example.dadadada.mvvm.model.entity.LoginEntity;
 import com.example.dadadada.mvvm.model.entity.LoginFanEntity;
-import com.example.dadadada.mvvm.model.entity.RegisterCodeEntity;
 import com.example.dadadada.mvvm.model.entity.RegisterEntity;
-import com.example.dadadada.mvvm.model.entity.UserEntity;
+import com.example.dadadada.mvvm.model.entity.RegisterFanEntity;
 import com.example.net.retrofit.BaseRespEntity;
 
 import retrofit2.http.Body;
@@ -18,7 +21,7 @@ import retrofit2.http.Query;
 
 public interface UserApi {
     @POST("/user/register")
-    LiveData<BaseRespEntity<RegisterEntity>> register(@Body RegisterEntity entity);
+    LiveData<BaseRespEntity<RegisterFanEntity>> register(@Body RegisterEntity entity);
 
     @POST("/user/login")
     LiveData<BaseRespEntity<LoginFanEntity>> login(@Body LoginEntity entity);
@@ -26,8 +29,12 @@ public interface UserApi {
     @GET("/user/getUserById")
     LiveData<BaseRespEntity<UserEntity>> getuser(@Query("id")int id);
 
+
     @PUT("/user/modifyHeadimg")
     LiveData<BaseRespEntity<ChangeUserEntity>> gethead(@Query("headimg")String headimg, @Query("id")int id);
+
+    @POST("/group/createGroup")
+    LiveData<BaseRespEntity<CreateQunFanEntity>> createee(@Body CreateQunEntity entity);
 
     @PUT("/user/modifyNick")
     LiveData<BaseRespEntity<ChangeUserEntity>> getname(@Query("id")int id, @Query("nick")String nick);

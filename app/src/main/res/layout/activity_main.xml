@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout
-    android:id="@+id/drawerLayout_main"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawerLayout_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.MainActivity">
@@ -12,17 +11,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
         <com.amap.api.maps.MapView
             android:id="@+id/map"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
-
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/img_head_main"
@@ -34,31 +33,31 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
-                android:background="@drawable/main_blackground"
-                android:text="您距离小明还有3Km"
-                android:textStyle="bold"
                 android:layout_gravity="center"
                 android:layout_marginLeft="15dp"
-                android:textColor="#FFF"
-                android:textSize="16dp"
+                android:background="@drawable/main_blackground"
+                android:drawableLeft="@drawable/main_location"
                 android:gravity="center"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:drawableLeft="@drawable/main_location"></TextView>
+                android:text="您距离小明还有3Km"
+                android:textColor="#FFF"
+                android:textSize="16dp"
+                android:textStyle="bold"></TextView>
 
 
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
-                android:drawableLeft="@drawable/main_edit_search"
-                android:hint="搜索..."
-                android:paddingRight="10dp"
-                android:paddingLeft="10dp"
-                android:textColorHint="#000"
                 android:layout_gravity="center"
                 android:layout_marginLeft="15dp"
+                android:background="@drawable/main_editground"
+                android:drawableLeft="@drawable/main_edit_search"
                 android:focusable="false"
-                android:background="@drawable/main_editground"></EditText>
+                android:hint="搜索..."
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textColorHint="#000"></EditText>
 
 
             <ImageView
@@ -66,8 +65,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="15dp"
-                android:src="@drawable/main_scan"
-                android:layout_marginRight="10dp"></ImageView>
+                android:layout_marginRight="10dp"
+                android:src="@drawable/main_scan"></ImageView>
         </LinearLayout>
 
         <LinearLayout
@@ -85,51 +84,21 @@
                 android:divider="@null"
                 android:dividerHeight="0dp" />
         </LinearLayout>
-        <com.example.dadadada.view.CustomView
+
+
+        <com.example.dadadada.view.BottomBarView
+            android:id="@+id/bottom"
             android:layout_width="wrap_content"
             android:layout_height="60dp"
             android:layout_marginLeft="60dp"
             android:layout_marginTop="550dp"
-            android:layout_marginRight="60dp"
-            android:background="@drawable/shape_background"
-            app:xSpace="20"
-            app:ySpace="10">
+            android:layout_marginRight="60dp" />
 
-            <ImageView
-                android:id="@+id/iv_person"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/img_background"
-                android:src="@drawable/ic_person" />
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/img_background"
-                android:src="@drawable/ic_shoucang" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/img_background"
-                android:src="@drawable/ic_message" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/img_background"
-                android:src="@drawable/ic_camera" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/img_background"
-                android:src="@drawable/ic_friendshape" />
-
-        </com.example.dadadada.view.CustomView>
     </RelativeLayout>
 
     <LinearLayout
+        android:id="@+id/cebian_kuang"
         android:layout_width="300dp"
         android:layout_height="match_parent"
         android:layout_gravity="left"
@@ -145,66 +114,67 @@
                 android:id="@+id/drawer_delete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_delete"
                 android:layout_alignParentRight="true"
+                android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp"></ImageView>
+                android:src="@drawable/ic_delete"></ImageView>
 
             <ImageView
                 android:id="@+id/drawer_headimg"
-                android:layout_gravity="center"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:src="@drawable/head_shape"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
                 android:layout_marginTop="40dp"
-                android:layout_centerHorizontal="true"></ImageView>
+                android:src="@drawable/head_shape"></ImageView>
 
             <ImageView
                 android:id="@+id/drawer_camera"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_camera"
+                android:layout_marginLeft="225dp"
                 android:layout_marginTop="35dp"
-                android:layout_marginLeft="225dp"></ImageView>
+                android:src="@drawable/ic_camera"></ImageView>
 
             <TextView
                 android:id="@+id/drawer_username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#FFF"
-                android:text="风清凉"
-                android:textSize="20dp"
-                android:textStyle="bold"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="200dp"></TextView>
+                android:layout_marginTop="200dp"
+                android:text="风清凉"
+                android:textColor="#FFF"
+                android:textSize="20dp"
+                android:textStyle="bold"></TextView>
 
 
             <TextView
                 android:id="@+id/drawer_introduce"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#FFF"
-                android:text="一小段自我介绍"
-                android:textSize="20dp"
-                android:textStyle="bold"
                 android:layout_centerHorizontal="true"
-                android:drawableLeft="@drawable/ic_pen"
                 android:layout_marginTop="230dp"
-                android:layout_marginBottom="15dp"></TextView>
+                android:layout_marginBottom="15dp"
+                android:drawableLeft="@drawable/ic_pen"
+                android:text="一小段自我介绍"
+                android:textColor="#FFF"
+                android:textSize="20dp"
+                android:textStyle="bold"></TextView>
         </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
+
             android:background="#C6FFFFFF">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:layout_marginLeft="20dp"
                 android:layout_marginTop="30dp"
-                android:layout_marginLeft="20dp">
+                android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -215,24 +185,24 @@
                     android:id="@+id/drawer_imgs"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20dp"
+                    android:paddingLeft="30dp"
                     android:text="我的相册"
-                    android:paddingLeft="30dp"></TextView>
+                    android:textSize="20dp"></TextView>
 
             </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#272727"
-                android:layout_marginTop="15dp"></View>
+                android:layout_marginTop="15dp"
+                android:background="#272727"></View>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:layout_marginLeft="20dp"
                 android:layout_marginTop="15dp"
-                android:layout_marginLeft="20dp">
+                android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -243,24 +213,24 @@
                     android:id="@+id/drawer_circulation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20dp"
+                    android:paddingLeft="30dp"
                     android:text="我的轨迹"
-                    android:paddingLeft="30dp"></TextView>
+                    android:textSize="20dp"></TextView>
 
             </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#FFFFFF"
-                android:layout_marginTop="15dp"></View>
+                android:layout_marginTop="15dp"
+                android:background="#FFFFFF"></View>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:layout_marginLeft="20dp"
                 android:layout_marginTop="15dp"
-                android:layout_marginLeft="20dp">
+                android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="30dp"
@@ -271,9 +241,9 @@
                     android:id="@+id/drawer_location"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20dp"
+                    android:paddingLeft="30dp"
                     android:text="定位"
-                    android:paddingLeft="30dp"></TextView>
+                    android:textSize="20dp"></TextView>
 
                 <Switch
                     android:id="@+id/drawer_location_switch"
@@ -286,15 +256,15 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#FFFFFF"
-                android:layout_marginTop="15dp"></View>
+                android:layout_marginTop="15dp"
+                android:background="#FFFFFF"></View>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:layout_marginLeft="20dp"
                 android:layout_marginTop="15dp"
-                android:layout_marginLeft="20dp">
+                android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="30dp"
@@ -304,9 +274,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20dp"
+                    android:paddingLeft="30dp"
                     android:text="消息提醒"
-                    android:paddingLeft="30dp"></TextView>
+                    android:textSize="20dp"></TextView>
 
                 <Switch
                     android:id="@+id/drawer_remind_switch"
@@ -320,15 +290,15 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#FFFFFF"
-                android:layout_marginTop="15dp"></View>
+                android:layout_marginTop="15dp"
+                android:background="#FFFFFF"></View>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:layout_marginLeft="20dp"
                 android:layout_marginTop="15dp"
-                android:layout_marginLeft="20dp">
+                android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -339,24 +309,24 @@
                     android:id="@+id/drawer_share"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20dp"
+                    android:paddingLeft="30dp"
                     android:text="分享"
-                    android:paddingLeft="30dp"></TextView>
+                    android:textSize="20dp"></TextView>
 
             </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#FFFFFF"
-                android:layout_marginTop="15dp"></View>
+                android:layout_marginTop="15dp"
+                android:background="#FFFFFF"></View>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:layout_marginLeft="20dp"
                 android:layout_marginTop="15dp"
-                android:layout_marginLeft="20dp">
+                android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="30dp"
@@ -367,9 +337,9 @@
                     android:id="@+id/drawer_setting"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20dp"
+                    android:paddingLeft="30dp"
                     android:text="设置"
-                    android:paddingLeft="30dp"></TextView>
+                    android:textSize="20dp"></TextView>
 
             </LinearLayout>
 

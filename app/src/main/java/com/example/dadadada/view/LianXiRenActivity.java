@@ -18,8 +18,13 @@ import com.example.dadadada.adapter.FriendsTokenAdapter;
 import com.example.dadadada.fragment.FriendsFragment;
 import com.example.dadadada.fragment.GroupChatFragment;
 import com.example.dadadada.fragment.GroupFragment;
+
+import com.example.dadadada.mvvm.model.entity.ConfigDemo;
+
+
 import com.example.dadadada.mvvm.model.entity.FriendsEntity;
-import com.example.dadadada.mvvm.model.entity.MyTabs;
+import com.example.dadadada.entity.MyTabs;
+
 import com.example.dadadada.mvvm.viewmodel.FriendsTokenViewModel;
 import com.example.net.retrofit.BaseRespEntity;
 import com.flyco.tablayout.CommonTabLayout;
@@ -88,9 +93,9 @@ public class LianXiRenActivity extends AppCompatActivity {
         list.add(new GroupChatFragment());
         fgAdapter = new FGAdapter(getSupportFragmentManager(), list);
         vp.setAdapter(fgAdapter);
-        tabs.add(new MyTabs("好友", 0, 0));
-        tabs.add(new MyTabs("分组", 0, 0));
-        tabs.add(new MyTabs("群聊", 0, 0));
+        tabs.add(new MyTabs(ConfigDemo.FRIENDS, ConfigDemo.SELECT_ICON, ConfigDemo.UNSELECT_ICON));
+        tabs.add(new MyTabs(ConfigDemo.GROUP, ConfigDemo.SELECT_ICON, ConfigDemo.UNSELECT_ICON));
+        tabs.add(new MyTabs(ConfigDemo.FRIENDSGROUP, ConfigDemo.SELECT_ICON, ConfigDemo.UNSELECT_ICON));
         common.setTabData(tabs);
         common.setOnTabSelectListener(new OnTabSelectListener() {
             @Override

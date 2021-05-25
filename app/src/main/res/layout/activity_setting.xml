@@ -92,7 +92,6 @@
 
     </LinearLayout>
 
-
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -100,12 +99,13 @@
         android:background="#C8C8C8"></View>
 
     <Button
+        android:id="@+id/tuichu_login"
+        android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="退出登录"
         android:layout_marginTop="20dp"
         android:background="#009688"
-        android:textColor="#FFF"
-        android:layout_marginLeft="40dp"></Button>
+        android:textColor="#FFF"></Button>
 
 </LinearLayout>
