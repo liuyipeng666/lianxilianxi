@@ -30,7 +30,6 @@ public class LoginViewModel  extends BaseViewModel<LoginRepository> {
     }
 
     public LiveData<BaseRespEntity<LoginFanEntity>> logincmd(LoginEntity entity){
-
         return mRepository.login(entity);
     }
  }

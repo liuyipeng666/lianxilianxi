@@ -4,14 +4,15 @@ package com.example.dadadada.view;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
-import android.net.Uri;
+import android.content.SharedPreferences;
+import android.hardware.Camera;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.PersistableBundle;
-import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Switch;
@@ -21,8 +22,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.FileProvider;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.lifecycle.Observer;
 
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
@@ -35,20 +36,36 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.dadadada.R;
-import com.example.dadadada.SettingActivity;
 import com.example.dadadada.Trace;
 import com.example.dadadada.adapter.TraceListAdapter;
 import com.example.dadadada.common.SpUtils;
+import com.example.dadadada.mvvm.model.entity.ChangeUserEntity;
+import com.example.dadadada.mvvm.viewmodel.LocationViewModel;
+import com.example.net.retrofit.BaseRespEntity;
 import com.umeng.socialize.ShareAction;
 import com.umeng.socialize.UMShareAPI;
 import com.umeng.socialize.UMShareListener;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 
-import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import static com.example.dadadada.PermissionValus.ACCESS_COARSE_LOCATION;
+import static com.example.dadadada.PermissionValus.ACCESS_FINE_LOCATION;
+import static com.example.dadadada.PermissionValus.BROADCAST_PACKAGE_ADDED;
+import static com.example.dadadada.PermissionValus.BROADCAST_PACKAGE_CHANGED;
+import static com.example.dadadada.PermissionValus.BROADCAST_PACKAGE_INSTALL;
+import static com.example.dadadada.PermissionValus.BROADCAST_PACKAGE_REPLACED;
+import static com.example.dadadada.PermissionValus.CALL_PHONE;
+import static com.example.dadadada.PermissionValus.CAMERA;
+import static com.example.dadadada.PermissionValus.READ_CONTACTS;
+import static com.example.dadadada.PermissionValus.READ_EXTERNAL_STORAGE;
+import static com.example.dadadada.PermissionValus.RECEIVE_BOOT_COMPLETED;
+import static com.example.dadadada.PermissionValus.WAKE_LOCK;
+import static com.example.dadadada.PermissionValus.WRITE_CONTACTS;
+import static com.example.dadadada.PermissionValus.WRITE_EXTERNAL_STORAGE;
 
 
 public class MainActivity extends AppCompatActivity implements AMapLocationListener, UMShareListener {
@@ -84,21 +101,12 @@ public class MainActivity extends AppCompatActivity implements AMapLocationListe
         //动态权限
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
             requestPermissions(new String[]{
-                    "android.permission.ACCESS_COARSE_LOCATION",
-                    "android.permission.ACCESS_FINE_LOCATION",
-                    "android.permission.WAKE_LOCK",
-                    "android.permission.BROADCAST_PACKAGE_ADDED",
-                    "android.permission.BROADCAST_PACKAGE_CHANGED",
-                    "android.permission.BROADCAST_PACKAGE_INSTALL",
-                    "android.permission.BROADCAST_PACKAGE_REPLACED",
-                    "android.permission.RECEIVE_BOOT_COMPLETED",
-                    "android.permission.READ_EXTERNAL_STORAGE",
-                    "android.permission.WRITE_EXTERNAL_STORAGE",
-                    "android.permission.CAMERA",
-                    "android.permission.CALL_PHONE",
-                    "android.permission.READ_CONTACTS",
-                    "android.permission.WRITE_CONTACTS",
-                    "android.permission.CALL_PHONE"
+                    ACCESS_COARSE_LOCATION, ACCESS_FINE_LOCATION,
+                    WAKE_LOCK,BROADCAST_PACKAGE_ADDED,
+                    BROADCAST_PACKAGE_CHANGED,BROADCAST_PACKAGE_INSTALL,
+                    BROADCAST_PACKAGE_REPLACED,RECEIVE_BOOT_COMPLETED,
+                    READ_EXTERNAL_STORAGE,WRITE_EXTERNAL_STORAGE,
+                    CAMERA,CALL_PHONE,READ_CONTACTS,WRITE_CONTACTS,
             }, 100);
         }
         initView();
@@ -109,7 +117,6 @@ public class MainActivity extends AppCompatActivity implements AMapLocationListe
         if (aMap == null) {
             aMap = mMapView.getMap();
         }
-        mapinit();
         imgHeadMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -122,19 +129,8 @@ public class MainActivity extends AppCompatActivity implements AMapLocationListe
 
             }
         });
-
-
-
-
-
-        ivPerson.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,LianXiRenActivity.class);
-                startActivity(intent);
-
-            }
-        });
+        //初始化相机
+        getCameraInstance();
     }
 
     @Override
@@ -147,6 +143,20 @@ public class MainActivity extends AppCompatActivity implements AMapLocationListe
                 double longitude = amapLocation.getLongitude();//获取经度
                 //  Log.d("123", "获取经度:"+longitude + "获取纬度" + latitude);
                 amapLocation.getAccuracy();//获取精度信息
+                //获取经纬度上传位置
+                SharedPreferences tLapp = getSharedPreferences("TLapp", MODE_PRIVATE);
+                int id = Integer.parseInt(tLapp.getString("id",""));
+                LocationViewModel locationViewModel = new LocationViewModel(MainActivity.this);
+                int lat = (int) latitude;
+                int lon = (int) longitude;
+                locationViewModel.locationsss(id,lat,lon).observe(MainActivity.this, new Observer<BaseRespEntity<ChangeUserEntity>>() {
+                    @Override
+                    public void onChanged(BaseRespEntity<ChangeUserEntity> changeUserEntityBaseRespEntity) {
+                        if (changeUserEntityBaseRespEntity.getMsg().equals("请求成功")) {
+                            Toast.makeText(MainActivity.this, "位置上传成功", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
                 SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 Date date = new Date(amapLocation.getTime());
                 df.format(date);//定位时间
@@ -159,12 +169,12 @@ public class MainActivity extends AppCompatActivity implements AMapLocationListe
         }
     }
 
-    private void mapinit() {
+    private void mapinit(boolean isChecked) {
         myLocationStyle = new MyLocationStyle();//初始化定位蓝点样式类myLocationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_LOCATION_ROTATE);//连续定位、且将视角移动到地图中心点，定位点依照设备方向旋转，并且会跟随设备移动。（1秒1次定位）如果不设置myLocationType，默认也会执行此种模式。
         myLocationStyle.interval(2000); //设置连续定位模式下的定位间隔，只在连续定位模式下生效，单次定位模式下不会生效。单位为毫秒。
         aMap.setMyLocationStyle(myLocationStyle);//设置定位蓝点的Style
         //aMap.getUiSettings().setMyLocationButtonEnabled(true);设置默认定位按钮是否显示，非必需设置。
-        aMap.setMyLocationEnabled(true);// 设置为true表示启动显示定位蓝点，false表示隐藏定位蓝点并不进行定位，默认是false。
+        aMap.setMyLocationEnabled(isChecked);// 设置为true表示启动显示定位蓝点，false表示隐藏定位蓝点并不进行定位，默认是false。
         mlocationClient = new AMapLocationClient(this);
         //初始化定位参数
         mLocationOption = new AMapLocationClientOption();
@@ -196,7 +206,6 @@ public class MainActivity extends AppCompatActivity implements AMapLocationListe
         traceList.add(new Trace("2019/12/12 14:30:00", "活动A     已参加（5/10）人                              下午三点 西二旗餐厅聚会...       "));
         adapter = new TraceListAdapter(this, traceList);
         lv.setAdapter(adapter);
-
         //关闭侧滑
         drawerDelete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -204,20 +213,15 @@ public class MainActivity extends AppCompatActivity implements AMapLocationListe
                 drawerLayoutMain.closeDrawer(Gravity.LEFT);
             }
         });
-
         //相机
         drawerCamera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
-                path = "sdcard/DCIM/Camera/" + createName();
-                Uri uriForFile = FileProvider.getUriForFile(MainActivity.this, "com.example.dadadada", new File(path));
-                intent.putExtra(MediaStore.EXTRA_OUTPUT, uriForFile);
-                startActivityForResult(intent, 200);
+
+                Intent intent = new Intent(MainActivity.this, CameraActivity.class);
+                startActivity(intent);
             }
         });
-
         //分享
         drawerShare.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -229,7 +233,7 @@ public class MainActivity extends AppCompatActivity implements AMapLocationListe
                         .open();
             }
         });
-
+        //设置
         drawerSetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -241,7 +245,33 @@ public class MainActivity extends AppCompatActivity implements AMapLocationListe
         if(username!=null){
             drawerUsername.setText(""+username);
         }
+        //打开侧滑
+        imgHeadMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawerLayoutMain.openDrawer(Gravity.LEFT);
+            }
+        });
+        //打开定位
+        drawerLocationSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                mapinit(isChecked);
+            }
+        });
+    }
 
+    //访问相机
+    /** A safe way to get an instance of the Camera object. */
+    public static Camera getCameraInstance(){
+        Camera c = null;
+        try {
+            c = Camera.open(); // attempt to get a Camera instance
+        }
+        catch (Exception e){
+            // Camera is not available (in use or does not exist)
+        }
+        return c; // returns null if camera is unavailable
     }
 
     @SuppressLint("SimpleDateFormat")

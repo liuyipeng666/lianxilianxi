@@ -4,12 +4,108 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SettingActivity"
-    android:background="#FFF">
+    tools:context=".view.SettingActivity"
+    android:background="#FFF"
+    android:orientation="vertical"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="50dp">
+
+        <ImageView
+            android:id="@+id/img_setting"
+            android:layout_width="100dp"
+            android:layout_marginLeft="25dp"
+            android:layout_height="100dp"
+            android:src="@drawable/head_shape"></ImageView>
+
+        <TextView
+            android:id="@+id/againimg_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="修改头像"
+            android:layout_gravity="center"
+            android:layout_marginLeft="60dp"></TextView>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/dp_10"
+        android:background="#C8C8C8"></View>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginLeft="@dimen/dp_10">
+
+        <EditText
+            android:id="@+id/name_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:hint="用户名"></EditText>
+
+        <TextView
+            android:id="@+id/againname_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="修改昵称"
+            android:layout_marginLeft="70dp"></TextView>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/dp_10"
+        android:background="#C8C8C8"></View>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginLeft="@dimen/dp_10">
+
+        <EditText
+            android:id="@+id/pass_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:layout_marginLeft="@dimen/dp_40"
+            android:hint="密    码"></EditText>
+
+        <TextView
+            android:id="@+id/againpass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="修改密码"
+            android:layout_marginLeft="70dp"></TextView>
+
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/dp_10"
+        android:background="#C8C8C8"></View>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="退出登录"></Button>
+        android:text="退出登录"
+        android:layout_marginTop="20dp"
+        android:background="#009688"
+        android:textColor="#FFF"
+        android:layout_marginLeft="40dp"></Button>
 
 </LinearLayout>
