@@ -2,8 +2,10 @@ com/example/net/retrofit/GsonUtils.java
  com.example.net.retrofit.GsonUtils
  com.example.net.retrofit.GsonUtils$1
  com.example.net.retrofit.GsonUtils$GsonUtilsHandler
-com/example/net/BuildConfig.java
- com.example.net.BuildConfig
+com/example/net/retrofit/NetTools.java
+ com.example.net.retrofit.NetTools
+ com.example.net.retrofit.NetTools$1
+ com.example.net.retrofit.NetTools$2
 com/example/net/retrofit/LiveDataCallAdapter.java
  com.example.net.retrofit.LiveDataCallAdapter
  com.example.net.retrofit.LiveDataCallAdapter$1
@@ -13,7 +15,5 @@ com/example/net/retrofit/ConsValue.java
  com.example.net.retrofit.ConsValue
 com/example/net/retrofit/BaseRespEntity.java
  com.example.net.retrofit.BaseRespEntity
-com/example/net/retrofit/NetTools.java
- com.example.net.retrofit.NetTools
- com.example.net.retrofit.NetTools$1
- com.example.net.retrofit.NetTools$2
+com/example/net/BuildConfig.java
+ com.example.net.BuildConfig

@@ -13,7 +13,11 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 
+import com.baweigame.xmpplibrary.XmppManager;
 import com.example.dadadada.R;
+import com.example.dadadada.common.MsgUtils;
+import com.example.dadadada.common.NetHelper;
+import com.example.dadadada.common.SPUtilss;
 import com.example.dadadada.mvvm.model.entity.LoginEntity;
 import com.example.dadadada.mvvm.model.entity.LoginFanEntity;
 import com.example.dadadada.mvvm.viewmodel.LoginViewModel;
@@ -76,6 +80,28 @@ public class LoginActivity extends AppCompatActivity {
         LoginEntity loginEntity = new LoginEntity();
         loginEntity.setPhonenumber(phonenumber);
         loginEntity.setPwd(pwd);
+        NetHelper.doTask(new Runnable() {
+            @Override
+            public void run() {
+                boolean result = XmppManager.getInstance().getXmppUserManager().login(phonenumber, pwd);
+                if (result){
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            SPUtilss.put(LoginActivity.this,"currSPUtilsentuser",phonenumber);
+                            startActivity(new Intent(LoginActivity.this,MainActivity.class));
+                        }
+                    });
+                } else {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            MsgUtils.showMsg(LoginActivity.this,"用户名或者密码不正确");
+                        }
+                    });
+                }
+            }
+        });
         if (!phonenumber.isEmpty() && !pwd.isEmpty()) {
             LoginViewModel loginViewModel = new LoginViewModel(this);
             loginViewModel.logincmd(loginEntity).observe(this, new Observer<BaseRespEntity<LoginFanEntity>>() {
@@ -93,11 +119,9 @@ public class LoginActivity extends AppCompatActivity {
                         edit.putString("pwd",pwd);
                         edit.putString("id",id+"");
                         edit.commit();
-                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
                         finish();
                     } else {
                         loginPwd.getText().clear();
-                        Toast.makeText(LoginActivity.this, "输入手机号或密码错误", Toast.LENGTH_SHORT).show();
                     }
                 }
             });

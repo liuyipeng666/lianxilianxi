@@ -12,6 +12,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/Common" />
+            <option value="$PROJECT_DIR$/CommonLibrary" />
             <option value="$PROJECT_DIR$/Log" />
             <option value="$PROJECT_DIR$/Resource" />
             <option value="$PROJECT_DIR$/XmppLibrary" />

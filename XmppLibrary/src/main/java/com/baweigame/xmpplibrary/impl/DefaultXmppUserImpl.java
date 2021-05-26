@@ -4,10 +4,10 @@ import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.bawei6.common.BitmapUtils;
-import com.bawei6.common.FileUtils;
 import com.baweigame.xmpplibrary.XmppManager;
 import com.baweigame.xmpplibrary.contract.IXmppUser;
+import com.baweigame.xmpplibrary.utils.BitmapUtils;
+import com.baweigame.xmpplibrary.utils.FileUtils;
 
 import org.jivesoftware.smack.SmackException;
 import org.jivesoftware.smack.StanzaCollector;
