@@ -1,13 +1,6 @@
 package com.example.dadadada.mvvm.model.entity;
 
 public class FriendsEntity {
-
-
-
-
-
-
-
         private int id;
         private String phonenumber;
         private String nick;

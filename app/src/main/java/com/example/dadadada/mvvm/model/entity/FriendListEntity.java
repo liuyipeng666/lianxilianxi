@@ -3,8 +3,6 @@ package com.example.dadadada.mvvm.model.entity;
 import java.util.List;
 
 public class FriendListEntity {
-
-
         private int id;
         private String phonenumber;
         private String nick;

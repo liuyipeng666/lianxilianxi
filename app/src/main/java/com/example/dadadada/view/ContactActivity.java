@@ -8,7 +8,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -21,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.dadadada.R;
 import com.example.dadadada.adapter.CAdapter;
+import com.example.dadadada.adapter.ConAdapter;
 import com.example.dadadada.adapter.SAdapter;
 import com.example.dadadada.common.ConstactEntity;
 
@@ -30,6 +30,7 @@ import java.util.List;
 public class ContactActivity extends AppCompatActivity {
     private List<ConstactEntity> list = new ArrayList<>();
     private List<String> str = new ArrayList<>();
+    private List<String> title = new ArrayList<>();
     private EditText edSou;
     private RecyclerView ree1;
     private RecyclerView ree2;
@@ -42,6 +43,7 @@ public class ContactActivity extends AppCompatActivity {
         setContentView(R.layout.activity_contact);
         initView();
         titleText.setText("联系人");
+        zuobian();
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
             requestPermissions(new String[]{
                     Manifest.permission.WRITE_CONTACTS, Manifest.permission.READ_CONTACTS
@@ -50,7 +52,7 @@ public class ContactActivity extends AppCompatActivity {
             huoqulianxiren();
         }
 
-        youlie();
+    da();
 
         imageFanhui.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,16 +60,24 @@ public class ContactActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    private void zuobian() {
+        for(char i='A';i<='Z';i++){
+            title.add(i+"");
+        }
+        ConAdapter sAdapter = new ConAdapter(R.layout.item_title_lianxiren, title);
+        ree1.setAdapter(sAdapter);
+        ree1.setLayoutManager(new LinearLayoutManager(this));
 
     }
 
-    private void youlie() {
+    private void da() {
         for(char i='A';i<='Z';i++){
             str.add(i+"");
         }
         SAdapter sAdapter = new SAdapter(R.layout.item_xyz, str);
         ree2.setAdapter(sAdapter);
-
         ree2.setLayoutManager(new LinearLayoutManager(this));
 
     }
@@ -81,7 +91,6 @@ public class ContactActivity extends AppCompatActivity {
     }
 
     private void huoqulianxiren(){
-        Log.i("www", "huoqulianxiren: 咚咚咚");
         ContentResolver contentResolver = getContentResolver();
         Uri uri = ContactsContract.CommonDataKinds.Phone.CONTENT_URI;
         String[] strings = {ContactsContract.CommonDataKinds.Phone.NUMBER, ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME};
@@ -96,7 +105,6 @@ public class ContactActivity extends AppCompatActivity {
             constactEntity.setName(name);
             constactEntity.setPhonenumber(phone);
             list.add(constactEntity);
-            Log.i("www", "huoqulianxiren: " + list.size());
             CAdapter cAdapter = new CAdapter(R.layout.item_c, list);
             ree1.setAdapter(cAdapter);
             ree1.setLayoutManager(new LinearLayoutManager(this));

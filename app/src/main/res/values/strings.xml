@@ -5,6 +5,9 @@
     <string name="number">发送消息</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="addFriend">添加好友</string>
-
-
+    <string name="huodong_one">团建</string>
+    <string name="huodong_two">聚餐</string>
+    <string name="huodong_three">旅游</string>
+    <string name="huodong_four">会议</string>
+    <string name="huodong_five">户外游玩</string>
 </resources>

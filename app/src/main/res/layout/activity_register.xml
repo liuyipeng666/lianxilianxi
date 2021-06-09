@@ -9,9 +9,7 @@
     tools:context=".view.RegisterActivity">
     <include android:layout_width="match_parent"
         android:layout_height="50dp"
-        layout="@layout/title_layout"
-
-        />
+        layout="@layout/title_layout" />
 
     <EditText
         android:id="@+id/register_name"
@@ -23,6 +21,7 @@
         android:paddingTop="20dp"
         android:textColor="#000"
         android:textColorHint="#60000000" />
+
     <EditText
         android:id="@+id/register_pwd"
         android:layout_width="250dp"
@@ -34,6 +33,27 @@
         android:hint="请输入密码"
         android:textColorHint="#60000000"
         />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center">
+
+        <EditText
+            android:id="@+id/register_textcode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="请输入验证码"></EditText>
+
+        <Button
+            android:id="@+id/register_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="验证码"></Button>
+
+    </LinearLayout>
+
     <Button
         android:id="@+id/register"
         android:text="注册"

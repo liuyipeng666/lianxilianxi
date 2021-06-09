@@ -6,6 +6,8 @@ import android.content.Context;
 
 import androidx.multidex.MultiDex;
 
+import com.example.imagerloader.ImageLoader;
+import com.example.imagerloader.impl.GlideStrategy;
 import com.example.net.LogLevel;
 import com.example.net.LogType;
 import com.example.net.ZLog;
@@ -26,7 +28,9 @@ public class App extends Application {
                 .build();
         ZXingLibrary.initDisplayOpinion(this);
         context=getApplicationContext();
+        ImageLoader.getInstance().initStrategy(new GlideStrategy());
         ZLogManager.getInstance().init(zlog);
+
         MultiDex.install(App.this);
 
         UMConfigure.init(this,"5a12384aa40fa3551f0001d1","umeng",UMConfigure.DEVICE_TYPE_PHONE,"");

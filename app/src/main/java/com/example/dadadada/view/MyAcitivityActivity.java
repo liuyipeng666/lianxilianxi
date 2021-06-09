@@ -1,7 +1,7 @@
 package com.example.dadadada.view;
 
-import android.app.Activity;
 import android.os.Bundle;
+import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -20,6 +20,7 @@ public class MyAcitivityActivity extends AppCompatActivity {
 
     private RecyclerView rv;
     private ActivityAdapter activityAdapter;
+    private EditText edit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,10 +41,12 @@ public class MyAcitivityActivity extends AppCompatActivity {
                 rv.setLayoutManager(new LinearLayoutManager(MyAcitivityActivity.this));
             }
         });
+//        edit.clearFocus();
     }
 
     private void initView() {
         rv = (RecyclerView) findViewById(R.id.rv);
 
+        edit = (EditText) findViewById(R.id.edit);
     }
 }

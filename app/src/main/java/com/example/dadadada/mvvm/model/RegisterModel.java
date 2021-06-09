@@ -5,13 +5,14 @@ import androidx.lifecycle.LiveData;
 import com.example.core.IModel;
 import com.example.dadadada.api.UserApi;
 import com.example.dadadada.mvvm.model.entity.RegisterEntity;
+import com.example.dadadada.mvvm.model.entity.RegisterFanEntity;
 import com.example.net.retrofit.BaseRespEntity;
 import com.example.net.retrofit.NetTools;
 
 
 public class RegisterModel implements IModel {
 
-    public LiveData<BaseRespEntity<RegisterEntity>> register(RegisterEntity userEntity){
+    public LiveData<BaseRespEntity<RegisterFanEntity>> register(RegisterEntity userEntity){
 
         UserApi api = NetTools.getInstance().create(UserApi.class);
 

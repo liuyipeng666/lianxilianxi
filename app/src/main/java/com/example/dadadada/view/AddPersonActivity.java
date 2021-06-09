@@ -1,6 +1,7 @@
 package com.example.dadadada.view;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -13,6 +14,7 @@ import com.example.dadadada.R;
 import com.example.dadadada.adapter.AddPersonAdapter;
 import com.example.dadadada.fragment.AddGroupFragment;
 import com.example.dadadada.fragment.AddPersonFragment;
+import com.example.dadadada.mvvm.model.entity.ConfigDemo;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
@@ -32,7 +34,7 @@ public class AddPersonActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_person);
         initView();
-        titleText.setText("添加");
+        titleText.setText(ConfigDemo.ADD);
 
         imageFanhui.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,12 +43,21 @@ public class AddPersonActivity extends AppCompatActivity {
             }
         });
 
+
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.i("123", "onStart: ");
+
         tab();
     }
 
     private void tab() {
-        title.add("找人");
-        title.add("找群");
+        title.add(ConfigDemo.FIND_PEOPLE);
+        title.add(ConfigDemo.FIND_GROUP);
 
         list.add(new AddPersonFragment());
         list.add(new AddGroupFragment());

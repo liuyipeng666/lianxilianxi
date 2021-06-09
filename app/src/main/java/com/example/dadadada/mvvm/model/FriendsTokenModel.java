@@ -3,7 +3,6 @@ package com.example.dadadada.mvvm.model;
 import androidx.lifecycle.LiveData;
 
 import com.example.core.IModel;
-
 import com.example.dadadada.api.FriendsApi;
 import com.example.dadadada.mvvm.model.entity.FriendsEntity;
 import com.example.net.retrofit.BaseRespEntity;

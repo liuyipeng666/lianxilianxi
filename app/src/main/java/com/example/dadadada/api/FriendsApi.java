@@ -1,10 +1,11 @@
 package com.example.dadadada.api;
 
 
+
 import androidx.lifecycle.LiveData;
 
-import com.example.dadadada.mvvm.model.entity.FriendListEntity;
 import com.example.dadadada.mvvm.model.entity.FriendsEntity;
+import com.example.dadadada.mvvm.model.entity.FriendListEntity;
 import com.example.net.retrofit.BaseRespEntity;
 
 import java.util.List;
@@ -20,9 +21,10 @@ public interface FriendsApi {
     @GET("/friend/findReqFriends")
     LiveData<BaseRespEntity<List<FriendsEntity>>> getFriendsToken(@Query("userid") int userid);
 
-    /** 
+    /**
      * 根据用户id获取好友列表
      */
     @GET("/friend/findByUserid")
     LiveData<BaseRespEntity<List<FriendListEntity>>> getList(@Query("userid") int userid);
+
 }

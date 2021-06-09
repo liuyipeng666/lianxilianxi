@@ -17,9 +17,13 @@ public abstract class BaseMVVMActivity<VM extends BaseViewModel,V extends ViewDa
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mV= DataBindingUtil.setContentView(this, getLayoutId());
-        mV.setVariable(getVariable(),createViewModel());
+        mViewModel=createViewModel();
+        //mV.setVariable(getVariable(),createViewModel());
         mV.setLifecycleOwner(this);
+        initData();
     }
+
+    protected abstract void initData();
 
     /**
      * 获取数据源
